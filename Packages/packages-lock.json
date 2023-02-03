@@ -1,20 +1,5 @@
 {
   "dependencies": {
-    "com.arongranberg.aline": {
-      "version": "file:ALINE",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.unity.burst": "1.7.2",
-        "com.unity.collections": "1.4.0",
-        "com.unity.jobs": "0.70.0-preview.7",
-        "com.unity.mathematics": "1.2.1",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.physics2d": "1.0.0",
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.ugui": "1.0.0"
-      }
-    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,
