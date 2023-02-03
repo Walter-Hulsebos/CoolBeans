@@ -1,0 +1,18 @@
+{
+    "name": "CoolBeans.Selection",
+    "rootNamespace": "CoolBeans.Selection",
+    "references": [
+        "Unity.Mathematics",
+        "Unity.InputSystem",
+        "CoolBeans.Utils"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
