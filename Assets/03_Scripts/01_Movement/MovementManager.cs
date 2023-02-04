@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DG.Tweening;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
+
+using DG.Tweening;
 
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
@@ -23,6 +25,8 @@ namespace CoolBeans
         [SerializeField, HideInInspector] private InputAction actInput;
         
         [SerializeField] private F32 maxJumpDistance = 10f;
+
+        [SerializeField] private F32 jumpTimePerUnit = 0.075f;
 
         [SerializeField] private new Camera camera;
 
@@ -153,7 +157,7 @@ namespace CoolBeans
                 F32x2   __randomPosOnStalk      = targetPosition;
                 I32     __attempts              = 0;
                 
-                const F32 R_RADIUS = 1f;
+                const F32 R_RADIUS = 2f;
                 const I32 MAX_ATTEMPTS = 20;
                 
                 while (__hasNoRandomPosOnStalk || __attempts < MAX_ATTEMPTS)
@@ -173,15 +177,17 @@ namespace CoolBeans
                 }
 
                 
-                F32x2 __direction = normalize(__randomPosOnStalk - __beanPosition);
-                F32   __distance  = distance(__randomPosOnStalk, __beanPosition);
-                
+                //F32x2 __direction = normalize(__randomPosOnStalk - __beanPosition);
+                F32 __distance   = distance(__randomPosOnStalk, __beanPosition);
+                F32 __jumpHeight = (__distance > 5f) ? 5f : (__distance * 0.75f);
+                F32 __jumpTime   = jumpTimePerUnit * __distance;
+
                 Boolean __canReachTarget = (__distance <= maxJumpDistance);
 
                 if (__canReachTarget)
                 {
                     //Debug.Log("Can reach target!");
-                    __bean.transform.DOJump(endValue: (Vector2)__randomPosOnStalk, jumpPower: 5f, numJumps: 1, duration: 0.5f);
+                    __bean.transform.DOJump(endValue: (Vector2)__randomPosOnStalk, jumpPower: __jumpHeight, numJumps: 1, duration: __jumpTime);
                 }
                 else
                 {
@@ -189,7 +195,7 @@ namespace CoolBeans
 
                     Debug.Log("Can't reach target, jumping to missed target position!");
                     //TODO: Add miss target effect/animation.
-                    __bean.transform.DOJump(endValue: __missedTargetPosition, jumpPower: 5f, numJumps: 1, duration: 0.6f)
+                    __bean.transform.DOJump(endValue: __missedTargetPosition, jumpPower: __jumpHeight, numJumps: 1, duration: __jumpTime)
                         .onComplete += () =>
                     {
                         //Enable physics.
@@ -206,15 +212,15 @@ namespace CoolBeans
             }
         }
         
-        public F32 jumpForce = 10f;
-        public void JumpTowards(Rigidbody2D body, Vector2 targetPosition)
-        {
-            Vector2 direction     = (targetPosition - (Vector2)transform.position).normalized;
-            float distance        = Vector2.Distance(transform.position, targetPosition);
-            float jumpDistance    = Mathf.Min(distance, maxJumpDistance);
-            Vector2 jumpDirection = direction * jumpDistance;
-            body.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
-        }
+        // public F32 jumpForce = 10f;
+        // public void JumpTowards(Rigidbody2D body, Vector2 targetPosition)
+        // {
+        //     Vector2 direction     = (targetPosition - (Vector2)transform.position).normalized;
+        //     float distance        = Vector2.Distance(transform.position, targetPosition);
+        //     float jumpDistance    = Mathf.Min(distance, maxJumpDistance);
+        //     Vector2 jumpDirection = direction * jumpDistance;
+        //     body.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
+        // }
 
     }
 }

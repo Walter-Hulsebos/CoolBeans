@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 8140705083604721505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8453818140731577677}
   m_Father: {fileID: 0}
@@ -103,8 +103,8 @@ MonoBehaviour:
   overlayTextureScale: 1
   outline: 1
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0.1
-  outlineQuality: 2
+  outlineWidth: 0.3
+  outlineQuality: 1
   outlineDownsampling: 1
   outlineVisibility: 0
   glowBlendMode: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   seeThroughBorderWidth: 0.45
   seeThroughOrdered: 0
   rmsCount: 3
-  hitFxInitialIntensity: 1
+  hitFxInitialIntensity: 0
   hitFxMode: 0
   hitFxFadeOutDuration: 0.25
   hitFxColor: {r: 1, g: 1, b: 1, a: 1}

@@ -176,11 +176,10 @@ namespace CoolBeans.Selection
             results:     _foundCollidersBuffer,
             layerMask :  unitLayerMaskValue);
             
-            //Debug.Log("Colliders within selection box: " + _foundCollidersCount);
-            for (I32 __index = 0; __index < _foundCollidersCount; __index++)
-            {
-                Debug.Log("Collider: " + _foundCollidersBuffer[__index].name);
-            }
+            // for (I32 __index = 0; __index < _foundCollidersCount; __index++)
+            // {
+            //     Debug.Log("Collider: " + _foundCollidersBuffer[__index].name);
+            // }
 
             if (addToSelectionInput.IsPressed())
             {
