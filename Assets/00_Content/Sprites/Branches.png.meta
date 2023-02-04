@@ -1,0 +1,402 @@
+fileFormatVersion: 2
+guid: 83006ce37f80a334f9a5851e752be6fa
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Branches_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1104
+        width: 514
+        height: 421
+      alignment: 9
+      pivot: {x: 0.219974, y: 0.14280719}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb71cf9200e0fee4c93b44011f5ca8f2
+      internalID: -595290798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_1
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 998
+        width: 561
+        height: 529
+      alignment: 9
+      pivot: {x: 0.3047036, y: 0.11826767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdf0c21583d7a4d42a66702c9cbf3f24
+      internalID: 1299959500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_2
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 1185
+        width: 239
+        height: 351
+      alignment: 9
+      pivot: {x: 0.19438957, y: 0.4571568}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d9deabc4eab1c40af39dfd911127a1
+      internalID: -218028857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_3
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 1147
+        width: 455
+        height: 385
+      alignment: 9
+      pivot: {x: 0.8210578, y: 0.059188247}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2a0717fd5c508745aca8d488907aeee
+      internalID: -733091525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_4
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 1197
+        width: 131
+        height: 276
+      alignment: 9
+      pivot: {x: 0.27041277, y: 0.8424758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb6de7bea4cbee048b05adaed9013905
+      internalID: -1191274845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_5
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 802
+        width: 313
+        height: 279
+      alignment: 9
+      pivot: {x: 0.932397, y: 0.5076996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0e78672c3bcc54383cc88d961d63e1
+      internalID: -1439770746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_6
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 555
+        width: 305
+        height: 588
+      alignment: 9
+      pivot: {x: 0.9155642, y: 0.54749554}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7914cec3d0fc64b9ab517a844965b6
+      internalID: 372679982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 577
+        width: 246
+        height: 185
+      alignment: 9
+      pivot: {x: 0.44760337, y: 0.7554684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff73a807b61d884d83d1cfa202ade7e
+      internalID: 761140946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_10
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 604
+        width: 353
+        height: 330
+      alignment: 9
+      pivot: {x: 0.0800853, y: 0.3372531}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa7eaa8c6e188f542b2f724299d04d93
+      internalID: -1689919337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_11
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 700
+        width: 81
+        height: 198
+      alignment: 9
+      pivot: {x: 0.6591292, y: 0.8580427}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b380d006cc40d45acd0638e08c0e8a
+      internalID: 875018490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_12
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 213
+        width: 352
+        height: 332
+      alignment: 9
+      pivot: {x: 0.60375106, y: 0.05999526}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d417130ab693844b9b112e638efdc03
+      internalID: 1276248282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branches_13
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 206
+        width: 139
+        height: 255
+      alignment: 9
+      pivot: {x: 0.51545465, y: 0.8454065}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da8cc8dda81663438814d19f93c16b1
+      internalID: -1792945715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Branches_5: -1439770746
+      Branches_10: -1689919337
+      Branches_13: -1792945715
+      Branches_0: -595290798
+      Branches_7: -1649514239
+      Branches_3: -733091525
+      Branches_1: 1299959500
+      Branches_2: -218028857
+      Branches_8: -1827228560
+      Branches_12: 1276248282
+      Branches_4: -1191274845
+      Branches_11: 875018490
+      Branches_9: 761140946
+      Branches_14: 1729002751
+      Branches_6: 372679982
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

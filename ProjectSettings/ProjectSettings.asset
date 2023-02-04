@@ -363,9 +363,14 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 0
       m_SubKind: 
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: WebGL
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
   m_BuildTargetShaderSettings: []
-  m_BuildTargetGraphicsJobs: []
+  m_BuildTargetGraphicsJobs:
+  - m_BuildTarget: WebGLSupport
+    m_GraphicsJobs: 1
   m_BuildTargetGraphicsJobMode: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
@@ -379,7 +384,9 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
-  m_BuildTargetGroupLightmapEncodingQuality: []
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetNormalMapEncoding: []
   m_BuildTargetDefaultTextureCompressionFormat: []
@@ -633,7 +640,22 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: POWER_INSPECTOR;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_VALIDATOR;ODIN_VALIDATOR_3_1
+    Android: URP_OUTLINE
+    EmbeddedLinux: URP_OUTLINE
+    GameCoreScarlett: URP_OUTLINE
+    GameCoreXboxOne: URP_OUTLINE
+    LinuxHeadlessSimulation: URP_OUTLINE
+    Lumin: URP_OUTLINE
+    Nintendo Switch: URP_OUTLINE
+    PS4: URP_OUTLINE
+    PS5: URP_OUTLINE
+    Stadia: URP_OUTLINE
+    Standalone: POWER_INSPECTOR;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_VALIDATOR;ODIN_VALIDATOR_3_1;URP_OUTLINE
+    WebGL: POWER_INSPECTOR;ODIN_VALIDATOR;ODIN_VALIDATOR_3_1;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;URP_OUTLINE
+    Windows Store Apps: URP_OUTLINE
+    XboxOne: URP_OUTLINE
+    iPhone: URP_OUTLINE
+    tvOS: URP_OUTLINE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
