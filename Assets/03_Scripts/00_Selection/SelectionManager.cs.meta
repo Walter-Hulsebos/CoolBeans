@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: df03c5e1eab7cb94eaed9051b6eed187
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - selectInputReference: {fileID: -4301004579082069948, guid: aa6669d0d06741b4f8d42e3f47a1e209, type: 3}
+  - addToSelectionInputReference: {fileID: 3284383754229234663, guid: aa6669d0d06741b4f8d42e3f47a1e209, type: 3}
+  - removeFromSelectionInputReference: {fileID: 4460399792262824024, guid: aa6669d0d06741b4f8d42e3f47a1e209, type: 3}
+  - camera: {instanceID: 0}
+  - selectionBox: {instanceID: 0}
+  - cursor: {instanceID: 0}
+  - testCubeStart: {instanceID: 0}
+  - testCubeEnd: {instanceID: 0}
+  - testCubeBox: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
