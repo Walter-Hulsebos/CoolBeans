@@ -314,7 +314,7 @@ namespace CoolBeans.Selection
 
             foreach (ISelectable __unitToAdd in _unitsToAddToSelection)
             {
-                Selection.Instance.Select(unit: __unitToAdd);
+                Selection.Instance.Select(  unit: __unitToAdd);
             }
             foreach (ISelectable __unitToRemove in _unitsToRemoveFromSelection)
             {
