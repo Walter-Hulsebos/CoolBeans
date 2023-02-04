@@ -102,7 +102,8 @@ namespace CoolBeans
             sproutSpriteShapeController.enabled = false;
 
             _points.Clear();
-            _points.Add(transform.position);
+            _points.Add(_tip);
+            _points.Add(_tip + _forward);
             
             lineRenderer.enabled = true;
             
@@ -129,6 +130,7 @@ namespace CoolBeans
             
             _tip += _forward * (sproutForwardSpeed * Time.deltaTime);
             sproutCameraPlaceHolder.position = _tip;
+            
             //lineRenderer.SetPosition(index: lineRenderer.positionCount - 1, position: _tip);
             
             _points[^1] = _tip;
@@ -147,6 +149,8 @@ namespace CoolBeans
                 _lengthSquared += __distToLastTipSquared;
                 _lastTip = _tip;
             }
+
+            lineRenderer.positionCount = _points.Count;
             lineRenderer.SetPositions(positions: _points.ToArray());
 
             //Searches for collider at the tip of the sprout, ignoring the sprout's own collider.
@@ -203,13 +207,14 @@ namespace CoolBeans
             Debug.Log("Rughaar");
             _canGrow = false;
             
-            lineRenderer.enabled                = false;
+            //lineRenderer.enabled                = false;
+            
             //sproutSpriteShapeController.enabled = true;
             //sproutSpriteShapeRenderer.enabled   = true;
             
             //Construct the sprite shape from the line renderer.
-            Vector3[] __positions = new Vector3[lineRenderer.positionCount];
-            lineRenderer.GetPositions(__positions);
+            //Vector3[] __positions = new Vector3[lineRenderer.positionCount];
+            //lineRenderer.GetPositions(__positions);
 
             //sproutSpriteShapeController.spline.Clear();
             //Bounds __bounds = new();
