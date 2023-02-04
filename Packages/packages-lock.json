@@ -1,5 +1,52 @@
 {
   "dependencies": {
+    "com.h8man.2d.navmeshplus": {
+      "version": "https://github.com/h8man/NavMeshPlus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f3c9c6d467115109044b3a508204649da5177b17"
+    },
+    "com.solidalloy.extevents": {
+      "version": "1.7.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "com.unity.settings-manager": "1.0.3",
+        "com.solidalloy.type-references": "2.16.0",
+        "com.solidalloy.unity-dropdown": "1.2.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.type-references": {
+      "version": "2.16.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "com.unity.settings-manager": "1.0.3",
+        "com.solidalloy.unity-dropdown": "1.2.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.unity-dropdown": {
+      "version": "1.2.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "org.nuget.system.memory": "4.5.4"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.util": {
+      "version": "1.40.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,
@@ -195,6 +242,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.shadergraph": {
       "version": "12.1.10",
       "depth": 1,
@@ -244,6 +298,38 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "org.nuget.system.buffers": {
+      "version": "4.5.1",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "org.nuget.system.memory": {
+      "version": "4.5.4",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "org.nuget.system.buffers": "4.5.1",
+        "org.nuget.system.numerics.vectors": "4.4.0",
+        "org.nuget.system.runtime.compilerservices.unsafe": "4.5.3"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "org.nuget.system.numerics.vectors": {
+      "version": "4.4.0",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "org.nuget.system.runtime.compilerservices.unsafe": {
+      "version": "4.5.3",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
     },
     "sc.posteffects": {
       "version": "file:SC Post Effects",

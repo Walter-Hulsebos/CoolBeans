@@ -4,6 +4,8 @@
     "references": [
         "Unity.Mathematics",
         "Unity.InputSystem",
+        "ExtEvents",
+        "HighlightPlus.Runtime",
         "CoolBeans.Utils"
     ],
     "includePlatforms": [],

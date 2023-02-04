@@ -19,7 +19,7 @@ namespace CoolBeans.Selection
         #endregion
         
         public readonly HashSet<ISelectable> SelectedUnits  = new();
-        public readonly List<ISelectable>    AvailableUnits = new();
+        public readonly List<ISelectable>    ExistingUnits = new();
 
 
         [PublicAPI]
@@ -27,8 +27,6 @@ namespace CoolBeans.Selection
         {
             if(unit == null) return;
             if(SelectedUnits.Contains(unit)) return; //Already selected
-            
-            Debug.Log(message: "Selected " + unit);
 
             SelectedUnits.Add(item: unit);
             unit.Select();
@@ -38,9 +36,7 @@ namespace CoolBeans.Selection
         public void Deselect(ISelectable unit)
         {
             if (!SelectedUnits.Contains(unit)) return; //Not selected
-            
-            Debug.Log(message: "Selected " + unit);
-            
+
             SelectedUnits.Remove(item: unit);
             unit.Deselect();
         }
