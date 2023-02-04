@@ -149,20 +149,20 @@ namespace CoolBeans.Selection
             selectionBox.sizeDelta        = new(x: abs(__width), y: abs(__height));
             
             F32x3 __startTestPos = MousePositionCurrentWorldSpace;
-            __startTestPos.z += 10;
+            __startTestPos.z += 100;
             testCubeStart.position = __startTestPos;
             
             F32x3 __endTestPos = MousePositionStartWorldSpace;
-            __endTestPos.z += 10;
+            __endTestPos.z += 100;
             testCubeEnd.position = __endTestPos;
 
             F32x3 __boxTestPos = MousePositionStartWorldSpace.Middle(MousePositionCurrentWorldSpace);
-            __boxTestPos.z += 10;
+            __boxTestPos.z += 100;
             testCubeBox.position = __boxTestPos;
 
             F32x3 __overlapBoxCenter = MousePositionStartWorldSpace.Middle(MousePositionCurrentWorldSpace);
             F32x3 __worldSpaceDelta  = MousePositionStartWorldSpace.Delta(MousePositionCurrentWorldSpace);
-            F32x3 __size = new(xy: abs(__worldSpaceDelta.xy), z: 500);
+            F32x3 __size = new(xy: abs(__worldSpaceDelta.xy), z: 1000);
             F32x3 __overlapBoxSize   = __size * 0.5f;
                 //new(xy: , z: 100);
 
@@ -203,11 +203,10 @@ namespace CoolBeans.Selection
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
             {
                 Collider __foundCollider = _foundCollidersBuffer[__index];
-
                 if (!__foundCollider.TryGetComponent(out ISelectable __selectable)) continue;
                 
                 //if it's already in the selection, skip.
-                //if(Selection.Instance.SelectedUnits.Contains(__selectable)) continue;
+                if(Selection.Instance.SelectedUnits.Contains(__selectable)) continue;
 
                 if(_unitsToRemoveFromSelection.Contains(__selectable))
                 {
@@ -225,20 +224,19 @@ namespace CoolBeans.Selection
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
             {
                 Collider __foundCollider = _foundCollidersBuffer[__index];
+                if (!__foundCollider.TryGetComponent(out ISelectable __selectable)) continue;
+                
+                //if it's not in the selection, skip.
+                if(!Selection.Instance.SelectedUnits.Contains(__selectable)) continue;
                     
-                if (__foundCollider.TryGetComponent(out ISelectable __selectable))
-                {
-                    //if it's not in the selection, skip.
-                    if(!Selection.Instance.SelectedUnits.Contains(__selectable)) continue;
-                    //if it's already in the units to remove, skip.
-                    if (_unitsToRemoveFromSelection.Contains(__selectable)) continue;
+                //if it's already in the units to remove, skip.
+                if (_unitsToRemoveFromSelection.Contains(__selectable)) continue;
 
-                    if(_unitsToAddToSelection.Contains(__selectable))
-                    {
-                        _unitsToAddToSelection.Remove(__selectable);
-                    }
-                    _unitsToRemoveFromSelection.Add(__selectable);
+                if(_unitsToAddToSelection.Contains(__selectable))
+                {
+                    _unitsToAddToSelection.Remove(__selectable);
                 }
+                _unitsToRemoveFromSelection.Add(__selectable);
             }
         }
 
@@ -249,13 +247,16 @@ namespace CoolBeans.Selection
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
             {
                 Collider __foundCollider = _foundCollidersBuffer[__index];
-                    
-                if (__foundCollider.TryGetComponent(out ISelectable __selectable))
+                if (!__foundCollider.TryGetComponent(out ISelectable __selectable)) continue;
+                
+                if(_unitsToAddToSelection.Contains(__selectable)) continue;
+                
+                if(_unitsToRemoveFromSelection.Contains(__selectable))
                 {
-                    if(_unitsToAddToSelection.Contains(__selectable)) continue;
-                    
-                    _unitsToAddToSelection.Add(__selectable);
+                    _unitsToRemoveFromSelection.Remove(__selectable);
                 }
+
+                _unitsToAddToSelection.Add(__selectable);
             }
             
             //Everything else should be added to `_unitsToRemoveFromSelection`, if it's currently selected.
@@ -274,14 +275,7 @@ namespace CoolBeans.Selection
         {
             foreach (ISelectable __unit in Selection.Instance.ExistingUnits)
             {
-                if(Selection.Instance.SelectedUnits.Contains(__unit))
-                {
-                    if (!__unit.gameObject.TryGetComponent(out HighlightEffect __highlightEffect)) continue;
-                    
-                    __highlightEffect.highlighted  = true;
-                    __highlightEffect.outlineColor = Color.white;
-                }
-                else if (_unitsToAddToSelection.Contains(__unit))
+                if (_unitsToAddToSelection.Contains(__unit))
                 {
                     if (!__unit.gameObject.TryGetComponent(out HighlightEffect __highlightEffect)) continue;
                     
@@ -294,6 +288,13 @@ namespace CoolBeans.Selection
                     
                     __highlightEffect.highlighted  = true;
                     __highlightEffect.outlineColor = Color.red;
+                }
+                else if(Selection.Instance.SelectedUnits.Contains(__unit))
+                {
+                    if (!__unit.gameObject.TryGetComponent(out HighlightEffect __highlightEffect)) continue;
+                    
+                    __highlightEffect.highlighted  = true;
+                    __highlightEffect.outlineColor = Color.white;
                 }
                 else
                 {
