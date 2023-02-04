@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.005
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -294,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_Name
       value: Bean.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
@@ -1423,6 +1431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.012
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -1915,6 +1927,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.006
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -1992,6 +2008,10 @@ PrefabInstance:
     - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_Name
       value: Bean.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
@@ -2119,6 +2139,10 @@ PrefabInstance:
     - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_Name
       value: Bean.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
@@ -2375,7 +2399,7 @@ EdgeCollider2D:
   - {x: -0.69399416, y: 11.624094}
   - {x: -2.0326836, y: 13.21187}
   - {x: -2.5247755, y: 13.861866}
-  - {x: -2.959754, y: 14.703386}
+  - {x: -2.959754, y: 14.703387}
   - {x: -3.1276457, y: 15.33019}
   - {x: -3.1803465, y: 16.20527}
   - {x: -2.9502385, y: 17.51843}
@@ -2502,6 +2526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.011
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -2579,6 +2607,10 @@ PrefabInstance:
     - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_Name
       value: Bean.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
@@ -3262,6 +3294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.001
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -3435,7 +3471,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3501,7 +3537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684936323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.71, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3595,6 +3631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.007
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -3672,6 +3712,10 @@ PrefabInstance:
     - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_Name
       value: Bean.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
@@ -3751,6 +3795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bean.010
       objectReference: {fileID: 0}
+    - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -3825,6 +3873,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5242268695676892045, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242268695676892045, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8140705083604721505, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
       propertyPath: m_Name
       value: Bean.000
