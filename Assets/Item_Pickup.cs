@@ -14,27 +14,23 @@ namespace CoolBeans
 		void Start()
 		{
 			bean = FindFirstObjectByType<Duplicate>();
-			bean.transform.position = new Vector2(square.transform.position.x, bean.transform.position.y);
-
-		}
-
-		// Update is called once per frame
-		void Update()
-		{
+			bean.transform.position = this.transform.position;
 
 		}
 
 		public void OnTriggerEnter2D(Collider2D other)
 		{
+			var x = other.GetComponent<Duplicate>();
 
-			if (other.GetComponent<Duplicate>()!= null)
+			if (x != null)
 			{
 
 				GameObject square = this.gameObject;
-				square.SetActive(false);
-				food++;
+				x.food++;
+				Destroy(square);
 				
-				return;
+				
+				
 			}
 		}
 	}
