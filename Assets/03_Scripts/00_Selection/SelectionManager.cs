@@ -32,9 +32,9 @@ namespace CoolBeans.Selection
         [SerializeField] private RectTransform selectionBox;
         [SerializeField] private RectTransform cursor;
         
-        [SerializeField] private Transform testCubeStart;
-        [SerializeField] private Transform testCubeEnd;
-        [SerializeField] private Transform testCubeBox;
+        // [SerializeField] private Transform testCubeStart;
+        // [SerializeField] private Transform testCubeEnd;
+        // [SerializeField] private Transform testCubeBox;
         
         [SerializeField] private LayerMask unitLayerMask  = (LayerMask)(1 << 6);
         [SerializeField, HideInInspector] private I32 unitLayerMaskValue;
@@ -139,8 +139,8 @@ namespace CoolBeans.Selection
             MousePositionStartCameraSpaceCentered = MousePositionCurrentCameraSpaceCentered;
         }
         
-        private readonly Collider[] _foundCollidersBuffer = new Collider[200];
-        private I32                 _foundCollidersCount  = 0;
+        private readonly Collider2D[] _foundCollidersBuffer = new Collider2D[200];
+        private I32                   _foundCollidersCount  = 0;
 
         private void UpdateSelectionBox()
         {
@@ -152,30 +152,29 @@ namespace CoolBeans.Selection
             selectionBox.anchoredPosition = (MousePositionStartCameraSpaceCentered + new F32x2(x: __width * 0.5f, y: __height * 0.5f));
             selectionBox.sizeDelta        = new(x: abs(__width), y: abs(__height));
             
-            F32x3 __startTestPos = MousePositionCurrentWorldSpace;
-            __startTestPos.z += 100;
-            testCubeStart.position = __startTestPos;
+            //F32x3 __startTestPos = MousePositionCurrentWorldSpace;
+            //__startTestPos.z += 100;
+            //testCubeStart.position = __startTestPos;
             
-            F32x3 __endTestPos = MousePositionStartWorldSpace;
-            __endTestPos.z += 100;
-            testCubeEnd.position = __endTestPos;
+            //F32x3 __endTestPos = MousePositionStartWorldSpace;
+            //__endTestPos.z += 100;
+            //testCubeEnd.position = __endTestPos;
 
-            F32x3 __boxTestPos = MousePositionStartWorldSpace.Middle(MousePositionCurrentWorldSpace);
-            __boxTestPos.z += 100;
-            testCubeBox.position = __boxTestPos;
+            //F32x3 __boxTestPos = MousePositionStartWorldSpace.Middle(MousePositionCurrentWorldSpace);
+            //__boxTestPos.z += 100;
+            //testCubeBox.position = __boxTestPos;
 
-            F32x3 __overlapBoxCenter = MousePositionStartWorldSpace.Middle(MousePositionCurrentWorldSpace);
-            F32x3 __worldSpaceDelta  = MousePositionStartWorldSpace.Delta(MousePositionCurrentWorldSpace);
-            F32x3 __size = new(xy: abs(__worldSpaceDelta.xy), z: 1000);
-            F32x3 __overlapBoxSize   = __size * 0.5f;
-                //new(xy: , z: 100);
+            F32x2 __overlapBoxCenter = MousePositionStartWorldSpace.Middle(MousePositionCurrentWorldSpace).xy;
+            F32x2 __overlapBoxSize   = abs(MousePositionStartWorldSpace.Delta(MousePositionCurrentWorldSpace).xy);
+            //F32x2 __size = new(xy: abs(__worldSpaceDelta.xy), z: 1000);
+            //F32x2 __overlapBoxSize   = __size * 0.5f;
 
-            _foundCollidersCount = Physics.OverlapBoxNonAlloc(
-                center:      __overlapBoxCenter, 
-                halfExtents: __overlapBoxSize, 
-                results:     _foundCollidersBuffer,
-                orientation: Quaternion.identity, 
-                mask:        unitLayerMaskValue);
+            _foundCollidersCount = Physics2D.OverlapBoxNonAlloc(
+            point: __overlapBoxCenter, 
+            size:  __overlapBoxSize, 
+            angle:  0,
+            results:     _foundCollidersBuffer,
+            layerMask :  unitLayerMaskValue);
             
             //Debug.Log("Colliders within selection box: " + _foundCollidersCount);
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
@@ -206,7 +205,7 @@ namespace CoolBeans.Selection
         {
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
             {
-                Collider __foundCollider = _foundCollidersBuffer[__index];
+                Collider2D __foundCollider = _foundCollidersBuffer[__index];
                 if (!__foundCollider.TryGetComponent(out ISelectable __selectable)) continue;
                 
                 //if it's already in the selection, skip.
@@ -227,7 +226,7 @@ namespace CoolBeans.Selection
         {
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
             {
-                Collider __foundCollider = _foundCollidersBuffer[__index];
+                Collider2D __foundCollider = _foundCollidersBuffer[__index];
                 if (!__foundCollider.TryGetComponent(out ISelectable __selectable)) continue;
                 
                 //if it's not in the selection, skip.
@@ -250,7 +249,7 @@ namespace CoolBeans.Selection
             _unitsToAddToSelection.Clear();
             for (I32 __index = 0; __index < _foundCollidersCount; __index++)
             {
-                Collider __foundCollider = _foundCollidersBuffer[__index];
+                Collider2D __foundCollider = _foundCollidersBuffer[__index];
                 if (!__foundCollider.TryGetComponent(out ISelectable __selectable)) continue;
                 
                 if(_unitsToAddToSelection.Contains(__selectable)) continue;

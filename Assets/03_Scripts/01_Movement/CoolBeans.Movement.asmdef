@@ -4,6 +4,7 @@
     "references": [
         "Unity.Mathematics",
         "Unity.InputSystem",
+        "DOTweenPro.Scripts",
         "CoolBeans.Selection"
     ],
     "includePlatforms": [],
