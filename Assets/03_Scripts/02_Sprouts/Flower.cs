@@ -1,24 +1,21 @@
-using System;
 using System.Collections;
-using DG.Tweening;
-using ExtEvents;
-using JetBrains.Annotations;
+
 using UnityEngine;
-using static Unity.Mathematics.math;
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-
 using Random = UnityEngine.Random;
 
+using JetBrains.Annotations;
+
+using ExtEvents;
+
+using DG.Tweening;
+using UnityEngine.Serialization;
 using F32  = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 using I32  = System.Int32;
 
 using Bool = System.Boolean;
 
-namespace CoolBeans
+namespace CoolBeans.Sprouts
 {
     public class Flower : MonoBehaviour
     {
@@ -28,7 +25,7 @@ namespace CoolBeans
 
         [SerializeField] private Vector2 spawnTimeMinMax = new(x: 0.2f, 1f);
 
-        [SerializeField] private ExtEvent OnSpawn;
+        [SerializeField] private ExtEvent onSpawn;
 
         private F32 _spawnTime;
 
@@ -40,7 +37,7 @@ namespace CoolBeans
             yield return new WaitForSeconds(Random.Range(spawnTimeMinMax.x, spawnTimeMinMax.y));
             
             visuals.SetActive(true);
-            visuals.transform.DOScale(Vector3.one * 0.5f, duration: 0.5f).SetEase(Ease.OutBack).onComplete += () => OnSpawn.Invoke();
+            visuals.transform.DOScale(Vector3.one * 0.5f, duration: 0.5f).SetEase(Ease.OutBack).onComplete += () => onSpawn.Invoke();
         }
 
         [PublicAPI]

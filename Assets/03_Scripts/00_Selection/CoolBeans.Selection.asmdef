@@ -7,7 +7,8 @@
         "ExtEvents",
         "HighlightPlus.Runtime",
         "Cinemachine",
-        "CoolBeans.Utils"
+        "CoolBeans.Utils",
+        "CoolBeans.Sprouts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

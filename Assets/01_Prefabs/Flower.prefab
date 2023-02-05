@@ -49,7 +49,7 @@ MonoBehaviour:
   visuals: {fileID: 5402944232340453349}
   sproutPrefab: {fileID: 2996955027637592075, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
   spawnTimeMinMax: {x: 0.2, y: 1.5}
-  OnSpawn:
+  onSpawn:
     _persistentListeners: []
     Expanded: 1
 --- !u!70 &1085323898586637017
@@ -65,8 +65,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015, y: 1}
-  m_Size: {x: 1.4, y: 2.5}
+  m_Offset: {x: -0.015, y: 1.09}
+  m_Size: {x: 1.18, y: 1.6}
   m_Direction: 0
 --- !u!1 &5402944232340453349
 GameObject:

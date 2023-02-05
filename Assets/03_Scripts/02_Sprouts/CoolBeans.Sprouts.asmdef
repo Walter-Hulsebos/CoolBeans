@@ -8,8 +8,7 @@
         "Unity.2D.SpriteShape.Runtime",
         "Unity.TextMeshPro",
         "DOTweenPro.Scripts",
-        "ExtEvents",
-        "ALINE"
+        "ExtEvents"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

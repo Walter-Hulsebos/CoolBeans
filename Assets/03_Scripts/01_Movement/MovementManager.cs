@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
@@ -12,12 +11,14 @@ using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
 using I32   = System.Int32;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace CoolBeans
 {
     using CoolBeans.Selection;
     using static CoolBeans.Selection.Selection;
+    using CoolBeans.Sprouts;
     
     public sealed class MovementManager : MonoBehaviour
     {
@@ -41,15 +42,18 @@ namespace CoolBeans
         [SerializeField] private Sprite cursorTextureAboveFlower;
         [SerializeField] private Sprite cursorTextureAboveStalk;
         [SerializeField] private Sprite cursorTextureAboveNothing;
-
-        private F32x2 _screenSafeAreaSize;
-        private F32x2 _screenSafeAreaHeightOffset;
-        private F32x2 _screenSafeAreaWidthOffset;
-        private F32x2 _screenSafeAreaSizeHalf;
         
+        //[SerializeField] private ExtEvent onAllBeansAreDead 
+
+        private F32x2 ScreenSafeAreaSize     => Screen.safeArea.size;
+        private F32x2 ScreenSafeAreaSizeHalf => ScreenSafeAreaSize * 0.5f;
+        
+        private F32x2 ScreenSafeAreaHeightOffset => new F32x2(x: 0,                     y: ScreenSafeAreaSize.y);
+        private F32x2 ScreenSafeAreaWidthOffset  => new F32x2(x: ScreenSafeAreaSize.x, y: 0);
+
         private F32x2 MousePositionCurrentCameraSpace => ((F32x2)Mouse.current.position.ReadValue());
         private F32x3 MousePositionCurrentWorldSpace  => camera.ScreenToWorldPoint(position: new F32x3(xy: MousePositionCurrentCameraSpace, z: camera.nearClipPlane));
-        private F32x2 MousePositionCurrentCameraSpaceCentered => (MousePositionCurrentCameraSpace - _screenSafeAreaHeightOffset);
+        private F32x2 MousePositionCurrentCameraSpaceCentered => (MousePositionCurrentCameraSpace - ScreenSafeAreaHeightOffset);
         
         #if UNITY_EDITOR
         private void Reset()
@@ -88,16 +92,19 @@ namespace CoolBeans
             actInput.Disable();
         }
         
-        private void Awake()
-        {
-            _screenSafeAreaSize     = (F32x2)Screen.safeArea.size;
-            _screenSafeAreaHeightOffset = new F32x2(x: 0,                     y: _screenSafeAreaSize.y);
-            _screenSafeAreaWidthOffset  = new F32x2(x: _screenSafeAreaSize.x, y: 0);
-            _screenSafeAreaSizeHalf = _screenSafeAreaSize * 0.5f;
-        }
+        // private void Awake()
+        // {
+        //     _screenSafeAreaSize     = (F32x2)Screen.safeArea.size;
+        //     ScreenSafeAreaHeightOffset = new F32x2(x: 0,                     y: _screenSafeAreaSize.y);
+        //     ScreenSafeAreaWidthOffset  = new F32x2(x: _screenSafeAreaSize.x, y: 0);
+        //     _screenSafeAreaSizeHalf = _screenSafeAreaSize * 0.5f;
+        // }
 
-        private readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[8];
-        private I32                     _flowerHitCount  = 0;
+        private readonly Collider2D[] _flowerHitBuffer = new Collider2D[8];
+        private I32                   _flowerHitCount  = 0;
+        
+        private Collider2D[] _flowerHitCache      = new Collider2D[8];
+        private I32          _flowerHitCountCache = 0;
 
         private Boolean _mouseIsOverFlower  = false;
         private Boolean _mouseIsOverStalk   = false;
@@ -111,17 +118,14 @@ namespace CoolBeans
             //         origin:    MousePositionCurrentWorldSpace.xy, 
             //         radius:    1.0f, 
             //         direction: Vector2.right, //why does a circle cast need a direction?
-            //         results:   _hitBuffer,
+            //         results:   _flowerHitBuffer,
             //         distance:  Mathf.Infinity,
             //         layerMask: stalkLayerMaskValue | flowerLayerMaskValue)
             //     )
 
-            _flowerHitCount = Physics2D.CircleCastNonAlloc(
-                origin:    __mousePositionCurrentWorldSpace.xy, 
-                radius:    1.0f, 
-                direction: Vector2.right, //why does a circle cast need a direction?
-                results:   _hitBuffer,
-                distance:  Mathf.Infinity,
+            _flowerHitCount = Physics2D.OverlapPointNonAlloc(
+                point:    __mousePositionCurrentWorldSpace.xy,
+                results:   _flowerHitBuffer,
                 layerMask: flowerLayerMaskValue);
             
             //Do flowers first.
@@ -136,7 +140,7 @@ namespace CoolBeans
             //     origin:    __mousePositionCurrentWorldSpace.xy, 
             //     radius:    0.1f, 
             //     direction: Vector2.right, //why does a circle cast need a direction?
-            //     results:   _hitBuffer,
+            //     results:   _flowerHitBuffer,
             //     distance:  Mathf.Infinity,
             //     layerMask: stalkLayerMaskValue);
             
@@ -163,8 +167,10 @@ namespace CoolBeans
             if (_mouseIsOverFlower)
             {
                 Debug.Log("Has hit a flower, moving to position!");
-                
-                JumpAllSelectedBeansToPoint(targetPosition: __mousePositionCurrentWorldSpace.xy);
+
+                _flowerHitCache      = _flowerHitBuffer;
+                _flowerHitCountCache = _flowerHitCount;
+                JumpAllSelectedBeansToPoint(targetPosition: __mousePositionCurrentWorldSpace.xy, onMadeJumpFirst: OnMadeJumpToFlowerFirst);
             }
             else if (_mouseIsOverStalk)
             {
@@ -178,7 +184,24 @@ namespace CoolBeans
             }
         }
 
-        private void JumpAllSelectedBeansToPoint(F32x2 targetPosition, Action onMadeJump = null)
+        private void OnMadeJumpToFlowerFirst(ISelectable bean)
+        {
+            Debug.Log("OnMadeJumpToFlowerFirst");
+            
+            if(_flowerHitCountCache > 0)
+            {
+                Debug.Log("There is a flower.");
+                
+                Collider2D __flowerHit = _flowerHitCache[0];
+
+                if (!__flowerHit.transform.TryGetComponent(out Flower __flowerComponent)) return;
+                
+                __flowerComponent.Blossom();
+                Destroy(bean.gameObject);
+            }
+        }
+
+        private void JumpAllSelectedBeansToPoint(F32x2 targetPosition, Action<ISelectable> onMadeJumpFirst = null, Action<ISelectable> onMadeJumpOther = null)
         {
             //for (I32 __index = 0; __index < Instance.SelectedUnits.Count; __index++)
             I32 __index = 0;
@@ -204,13 +227,13 @@ namespace CoolBeans
 
                     while (__hasNoRandomPosOnStalk || __attempts < MAX_ATTEMPTS)
                     {
-                        F32x2 __randomOffset = new(x: Random.Range(-R_RADIUS, +R_RADIUS),
+                        F32x2 __randomOffset = new(
+                            x: Random.Range(-R_RADIUS, +R_RADIUS), 
                             y: Random.Range(-R_RADIUS, +R_RADIUS));
                         F32x2 __randomSample = __beanTargetPosition + __randomOffset;
 
                         //Check if position is on stalk.
-                        Collider2D __collider2D =
-                            Physics2D.OverlapPoint(point: __randomSample, layerMask: stalkLayerMaskValue);
+                        Collider2D __collider2D = Physics2D.OverlapPoint(point: __randomSample, layerMask: stalkLayerMaskValue);
                         if (__collider2D != null)
                         {
                             __randomPosOnStalk = __randomSample;
@@ -232,8 +255,7 @@ namespace CoolBeans
 
                 if (__canReachTarget)
                 {
-                    __bean.Jump(__beanTargetPosition, jumpHeight: __jumpHeight, jumpDuration: __jumpTime,
-                        onMadeJump: onMadeJump);
+                    __bean.Jump(__beanTargetPosition, jumpHeight: __jumpHeight, jumpDuration: __jumpTime, onMadeJump: (__index == 0) ? onMadeJumpFirst : onMadeJumpOther);
                 }
                 else
                 {

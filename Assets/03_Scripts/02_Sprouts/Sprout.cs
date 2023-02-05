@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
 
-using Drawing;
 using ExtEvents;
 
 #if ODIN_INSPECTOR

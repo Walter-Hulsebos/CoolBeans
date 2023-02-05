@@ -17,7 +17,7 @@ namespace CoolBeans.Selection
         void Select();
         void Deselect();
 
-        public void Jump(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration, Action onMadeJump = null);
+        public void Jump(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration, Action<ISelectable> onMadeJump = null);
         public void Fall(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration);
     }
 }

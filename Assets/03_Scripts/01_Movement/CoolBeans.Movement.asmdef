@@ -4,8 +4,10 @@
     "references": [
         "Unity.Mathematics",
         "Unity.InputSystem",
+        "ExtEvents",
         "DOTweenPro.Scripts",
-        "CoolBeans.Selection"
+        "CoolBeans.Selection",
+        "CoolBeans.Sprouts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using ExtEvents;
 using HighlightPlus;
 
 using UnityEngine;
@@ -30,6 +30,8 @@ namespace CoolBeans.Selection
         [SerializeField] private new Camera camera;
         
         [SerializeField] private RectTransform selectionBox;
+        
+        [SerializeField] public ExtEvent onAllBeansDead = new();
 
         // [SerializeField] private Transform testCubeStart;
         // [SerializeField] private Transform testCubeEnd;
@@ -46,8 +48,8 @@ namespace CoolBeans.Selection
         private readonly HashSet<ISelectable> _unitsToAddToSelection      = new();
         private readonly HashSet<ISelectable> _unitsToRemoveFromSelection = new();
         
-        private F32x2 _screenSafeAreaSize;
-        private F32x2 _screenSafeAreaSizeHalf;
+        private F32x2 ScreenSafeAreaSize     => Screen.safeArea.size;
+        private F32x2 ScreenSafeAreaSizeHalf => ScreenSafeAreaSize * 0.5f;
 
         private F32x2 MousePositionStartCameraSpace           { get; set; }
         private F32x3 MousePositionStartWorldSpace            => camera.ScreenToWorldPoint(position: new F32x3(xy: MousePositionStartCameraSpace, z: camera.nearClipPlane));
@@ -56,7 +58,7 @@ namespace CoolBeans.Selection
 
         private F32x2 MousePositionCurrentCameraSpace         => ((F32x2)Mouse.current.position.ReadValue());
         private F32x3 MousePositionCurrentWorldSpace          => camera.ScreenToWorldPoint(position: new F32x3(xy: MousePositionCurrentCameraSpace, z: camera.nearClipPlane));
-        private F32x2 MousePositionCurrentCameraSpaceCentered => (MousePositionCurrentCameraSpace - _screenSafeAreaSizeHalf);
+        private F32x2 MousePositionCurrentCameraSpaceCentered => (MousePositionCurrentCameraSpace - ScreenSafeAreaSizeHalf);
         //private F32x3 MousePositionCurrentWorldSpaceCentered  => camera.ToWorldSpace(cameraSpacePosition: new F32x3(xy: MousePositionCurrentCameraSpaceCentered, z: camera.nearClipPlane));
 
         #if UNITY_EDITOR
@@ -88,28 +90,37 @@ namespace CoolBeans.Selection
             addToSelectionInput      = addToSelectionInputReference.action;
             removeFromSelectionInput = removeFromSelectionInputReference.action;
             
+            Selection.Instance.OnUnitRemoved += OnUnitRemoved;
+            
             selectInput.Enable();
             addToSelectionInput.Enable();
             removeFromSelectionInput.Enable();
         }
         private void OnDisable()
         {
+            Selection.Instance.OnUnitRemoved -= OnUnitRemoved;
+            
             removeFromSelectionInput.Disable();
             addToSelectionInput.Disable();
             selectInput.Disable();
         }
-
-        private void Awake()
-        {
-            _screenSafeAreaSize     = (F32x2)Screen.safeArea.size;
-            _screenSafeAreaSizeHalf = _screenSafeAreaSize * 0.5f;
-        }
-
         private void Update()
         {
             HandleSelectionInputs();
 
             //cursor.anchoredPosition = MousePositionCurrentCameraSpaceCentered;
+        }
+
+        private void OnUnitRemoved(ISelectable unit)
+        {
+            _unitsToAddToSelection.Remove(unit);
+            _unitsToRemoveFromSelection.Remove(unit);
+
+            if (Selection.Instance.ExistingUnits.Count == 0)
+            {
+                Debug.Log("ALL BEANS ARE DEAD!!!");
+                onAllBeansDead.Invoke();
+            }
         }
 
         private void HandleSelectionInputs()

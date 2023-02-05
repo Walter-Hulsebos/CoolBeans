@@ -34,11 +34,11 @@ namespace CoolBeans.Selection
         
         private void OnEnable()
         {
-            Selection.Instance.ExistingUnits.Add(item: this);
+            Selection.Instance.Add(unit: this);
         }
         private void OnDisable()
         {
-            Selection.Instance.ExistingUnits.Remove(item: this);
+            Selection.Instance.Remove(unit: this);
             
             _targetGroup.RemoveMember(transform);
         }
@@ -61,9 +61,9 @@ namespace CoolBeans.Selection
             OnDeselected.Invoke();
         }
 
-        public void Jump(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration, Action onMadeJump = null)
+        public void Jump(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration, Action<ISelectable> onMadeJump = null)
         {
-            transform.DOJump(endValue: (Vector2)targetPosition, jumpPower: jumpHeight, numJumps: 1, duration: jumpDuration).onComplete += () => onMadeJump?.Invoke();
+            transform.DOJump(endValue: (Vector2)targetPosition, jumpPower: jumpHeight, numJumps: 1, duration: jumpDuration).onComplete += () => onMadeJump?.Invoke(obj: this);
         }
 
         public void Fall(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration)
