@@ -63,7 +63,7 @@ namespace CoolBeans
                 {
                     __length += distance(_points[__index - 1], _points[__index]);
                 }
-                Debug.Log("Length: " + __length);
+                //Debug.Log("Length: " + __length);
 
                 return __length;
             }
@@ -201,7 +201,7 @@ namespace CoolBeans
             F32 __distToLastTipSquared = distancesq(_lastTip, _tip);
             if (__distToLastTipSquared >= distanceSquaredRequiredForNewSegment)
             {
-                Debug.Log("Count = " + _points.Count);
+                //Debug.Log("Count = " + _points.Count);
                 
                 _points.Add(_tip);
 
@@ -229,7 +229,7 @@ namespace CoolBeans
             //F32 __distanceToOrigin = distance(transform.position, _tip);
             if(SproutLength <= collisionSafeLength) return;
             
-            Debug.Log("Length is long enough for collision checks, length: " + SproutLength + " collisionSafeLength: " + collisionSafeLength + " origin: " + transform.position + " tip: " + _tip);
+            //Debug.Log("Length is long enough for collision checks, length: " + SproutLength + " collisionSafeLength: " + collisionSafeLength + " origin: " + transform.position + " tip: " + _tip);
             
             //Searches for collider at the tip of the sprout, ignoring the sprout's own collider.
             I32 __colliderCountAtTipCount = Physics2D.OverlapPointNonAlloc(point: _tip.xy, results: _collidersAtTipBuffer, layerMask: hitsLayerMask);
@@ -291,7 +291,7 @@ namespace CoolBeans
             
             onSproutGrew.Invoke();
             
-            Debug.Log("Rughaar");
+            //Debug.Log("Rughaar");
             _canGrow = false;
             
             //lineRenderer.enabled                = false;

@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using ExtEvents;
 using UnityEngine;
 
 namespace CoolBeans
 {
-    public class Food : MonoBehaviour
+    public class FoodPickup : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private ExtEvent onEaten = new();
         
-        }
-
-        // Update is called once per frame
-        void Update()
+        public void Eat()
         {
-        
+            onEaten?.Invoke();
+            
+            Destroy(gameObject);
         }
     }
 }

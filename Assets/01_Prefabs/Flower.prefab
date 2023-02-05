@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 270764983366451370}
   - component: {fileID: 270764983366451369}
-  m_Layer: 0
+  - component: {fileID: 1085323898586637017}
+  m_Layer: 8
   m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,6 +52,22 @@ MonoBehaviour:
   OnSpawn:
     _persistentListeners: []
     Expanded: 1
+--- !u!70 &1085323898586637017
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270764983366451372}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.015, y: 1}
+  m_Size: {x: 1.4, y: 2.5}
+  m_Direction: 0
 --- !u!1 &5402944232340453349
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8895474576033357961}
   - component: {fileID: 3926174692023730401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +93,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5402944232340453349}
   m_LocalRotation: {x: -0, y: -0, z: -0.25881857, w: 0.96592593}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,7 +140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 1b985772a17c8d4499d7fa65fa10f738, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

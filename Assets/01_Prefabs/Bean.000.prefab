@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 8140705083604721514}
   - component: {fileID: 8140705083604721515}
   - component: {fileID: 5242268695676892045}
+  - component: {fileID: 5592613066182782418}
   - component: {fileID: 3157670833872919004}
+  - component: {fileID: 7744588950582563451}
   m_Layer: 6
   m_Name: Bean.000
   m_TagString: Untagged
@@ -199,6 +201,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.013856411, y: 1.1647277}
   m_Size: {x: 1.109065, y: 2.2730503}
   m_Direction: 0
+--- !u!50 &5592613066182782418
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140705083604721505}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!114 &3157670833872919004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +245,22 @@ MonoBehaviour:
   medievalObj: {fileID: 8453818141131417518}
   romanObj: {fileID: 8453818141830231076}
   caveManObj: {fileID: 8453818142290054007}
+--- !u!114 &7744588950582563451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140705083604721505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f575bec13bd613a418aeaf469c15bef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beanPrefab: {fileID: 8140705083604721505}
+  foodRequiredForBean: 3
+  foodCount: 0
+  radius: 0
 --- !u!1 &8453818140606041747
 GameObject:
   m_ObjectHideFlags: 0

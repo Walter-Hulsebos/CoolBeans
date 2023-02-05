@@ -30,8 +30,7 @@ namespace CoolBeans.Selection
         [SerializeField] private new Camera camera;
         
         [SerializeField] private RectTransform selectionBox;
-        [SerializeField] private RectTransform cursor;
-        
+
         // [SerializeField] private Transform testCubeStart;
         // [SerializeField] private Transform testCubeEnd;
         // [SerializeField] private Transform testCubeBox;
@@ -110,7 +109,7 @@ namespace CoolBeans.Selection
         {
             HandleSelectionInputs();
 
-            cursor.anchoredPosition = MousePositionCurrentCameraSpaceCentered;
+            //cursor.anchoredPosition = MousePositionCurrentCameraSpaceCentered;
         }
 
         private void HandleSelectionInputs()
