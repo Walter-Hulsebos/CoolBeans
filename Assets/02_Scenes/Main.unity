@@ -35081,6 +35081,16 @@ MonoBehaviour:
         _typeNameAndAssembly: 
         _suppressLogs: 0
       _methodName: Play
+    - _persistentArguments: []
+      _target: {fileID: 1664611156}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: Stop
     Expanded: 1
   unitLayerMask:
     serializedVersion: 2
@@ -37050,6 +37060,16 @@ MonoBehaviour:
         _typeNameAndAssembly: 
         _suppressLogs: 0
       _methodName: Play
+    - _persistentArguments: []
+      _target: {fileID: 1664611156}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: Stop
     Expanded: 1
   beanHasCrossedThreshold: 0
 --- !u!212 &1718534556
