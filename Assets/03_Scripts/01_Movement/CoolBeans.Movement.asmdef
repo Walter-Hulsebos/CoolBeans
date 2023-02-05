@@ -1,0 +1,21 @@
+{
+    "name": "CoolBeans.Movement",
+    "rootNamespace": "CoolBeans.Movement",
+    "references": [
+        "Unity.Mathematics",
+        "Unity.InputSystem",
+        "ExtEvents",
+        "DOTweenPro.Scripts",
+        "CoolBeans.Selection",
+        "CoolBeans.Sprouts"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

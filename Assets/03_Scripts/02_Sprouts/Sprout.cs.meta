@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 78f0a8373d8e98e4ea6be91b10381910
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - steerInputReference: {fileID: 3758733222815689864, guid: aa6669d0d06741b4f8d42e3f47a1e209, type: 3}
+  - sproutSpriteShapeController: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

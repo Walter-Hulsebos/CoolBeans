@@ -2301,7 +2301,8 @@ namespace HighlightPlus {
         /// <summary>
         /// Updates profile glow color
         /// </summary>
-        public void SetGlowColor(Color color) {
+        public void SetGlowColor(Color color) 
+        {
             if (glowPasses != null) {
                 for (int k = 0; k < glowPasses.Length; k++) {
                     glowPasses[k].color = color;

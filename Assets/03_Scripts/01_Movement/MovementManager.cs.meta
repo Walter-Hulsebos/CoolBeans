@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b2aabb1d9f8a9ab49b95b3de2f71e06d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - actInputReference: {fileID: -3979060742134416439, guid: aa6669d0d06741b4f8d42e3f47a1e209, type: 3}
+  - camera: {instanceID: 0}
+  - cursorUI: {instanceID: 0}
+  - cursorTextureAboveFlower: {fileID: 21300000, guid: dfc7408e7691eff459da2963fad7e912, type: 3}
+  - cursorTextureAboveStalk: {fileID: 21300000, guid: 4d9f12a86cf2b5f4eae7703b94f8572a, type: 3}
+  - cursorTextureAboveNothing: {fileID: 21300000, guid: dbba9b1f5baa2f2448454a5575378cda, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
