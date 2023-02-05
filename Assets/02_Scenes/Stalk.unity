@@ -2210,7 +2210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768642660}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268322, w: 0.9238796}
-  m_LocalPosition: {x: -4.34, y: 13.42, z: 0}
+  m_LocalPosition: {x: 2.68, y: 11.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2242,13 +2242,20 @@ MonoBehaviour:
   sproutCameraPlaceHolder: {fileID: 727004343}
   sproutForwardSpeed: 3
   sproutSteeringSpeed: 60
-  sproutMaxLength: 15
-  sproutMaxLengthSquared: 225
+  collisionSafeLength: 12
+  sproutMaxLength: 30
+  sproutMaxLengthSquared: 900
   distanceRequiredForNewSegment: 0.5
   distanceSquaredRequiredForNewSegment: 0.25
   hitsLayerMask:
     serializedVersion: 2
     m_Bits: 384
+  onSproutCollided:
+    _persistentListeners: []
+    Expanded: 1
+  onSproutGrew:
+    _persistentListeners: []
+    Expanded: 1
   sproutRenderer: {fileID: 768642668}
   sproutColliderGenerator: {fileID: 768642669}
   sproutEdgeCollider2D: {fileID: 768642661}

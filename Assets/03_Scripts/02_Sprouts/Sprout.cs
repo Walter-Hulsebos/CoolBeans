@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
 
 using Drawing;
+using ExtEvents;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -38,6 +39,11 @@ namespace CoolBeans
         #endif
         [SerializeField] private F32 sproutSteeringSpeed                                   = 60f;
         
+        #if ODIN_INSPECTOR
+        [SuffixLabel(label: "metres", overlay: true)]
+        #endif
+        [SerializeField] private F32 collisionSafeLength                                   = 10f;
+        
         [SerializeField] private F32                  sproutMaxLength                      = 15;
         [SerializeField, HideInInspector] private F32 sproutMaxLengthSquared               = 225;
         [SerializeField] private F32                  distanceRequiredForNewSegment        = 0.5f;
@@ -45,6 +51,39 @@ namespace CoolBeans
         
         //Include layer 7 and 8 by default.
         [SerializeField] private LayerMask hitsLayerMask = 1 << 7 | 1 << 8;
+
+        private F32 SproutLength
+        {
+            get
+            {
+                if (_points.Count <= 1) return 0;
+
+                F32 __length = 0;
+                for (I32 __index = 1; __index < _points.Count - 1; __index += 1)
+                {
+                    __length += distance(_points[__index - 1], _points[__index]);
+                }
+                Debug.Log("Length: " + __length);
+
+                return __length;
+            }
+            
+            
+        }
+
+        #region Events
+
+        #if ODIN_INSPECTOR
+        [FoldoutGroup(groupName: "Events")]
+        #endif
+        [SerializeField] private ExtEvent onSproutCollided;
+        
+        #if ODIN_INSPECTOR
+        [FoldoutGroup(groupName: "Events")]
+        #endif
+        [SerializeField] private ExtEvent onSproutGrew;
+
+        #endregion
 
         // [SerializeField, HideInInspector] private SpriteShapeController sproutSpriteShapeController;
         // [SerializeField, HideInInspector] private SpriteShapeRenderer   sproutSpriteShapeRenderer;
@@ -59,6 +98,8 @@ namespace CoolBeans
         private F32x3 _tip;
         private F32x3 _lastTip;
         private F32   _lengthSquared;
+        
+        //private F32   _growStartTime = -1;
         
         private Boolean _canGrow = true;
 
@@ -120,10 +161,15 @@ namespace CoolBeans
 
         private void Update()
         {
-            if (_canGrow)
-            {
-                Grow();
-            }
+            if (!_canGrow) return;
+            
+            // if (_growStartTime <= 0)
+            // {
+            //     Debug.Log(message: "Starting to grow." + Time.time);
+            //     _growStartTime = Time.time;
+            // }
+                
+            Grow();
         }
 
         private readonly Collider2D[] _collidersAtTipBuffer = new Collider2D[3];
@@ -166,10 +212,27 @@ namespace CoolBeans
             
             sproutColliderGenerator.Generate();
 
-            //Searches for collider at the tip of the sprout, ignoring the sprout's own collider.
+            //Boolean __sproutIsAtMaxLength = (_lengthSquared + __distToLastTipSquared) >= sproutMaxLength;
+            Boolean __sproutIsAtMaxLength = (SproutLength >= sproutMaxLength);
+            if (__sproutIsAtMaxLength)
+            {
+                Debug.Log("Sprout is at max length.");
+                StopGrowing();
+            }
 
+            //if (Time.time <= (_growStartTime + collisionSafeTime)) return;
+            
+            //If the sprout is too short, we don't need to check for collisions, since you start inside a collider.
+            
+            //F32 __distanceToOrigin = distance(transform.position, _tip);
+            if(SproutLength <= collisionSafeLength) return;
+            
+            Debug.Log("Length is long enough for collision checks, length: " + SproutLength + " collisionSafeLength: " + collisionSafeLength + " origin: " + transform.position + " tip: " + _tip);
+            
+            //Searches for collider at the tip of the sprout, ignoring the sprout's own collider.
             I32 __colliderCountAtTipCount = Physics2D.OverlapPointNonAlloc(point: _tip.xy, results: _collidersAtTipBuffer, layerMask: hitsLayerMask);
             Boolean __sproutIsCollidingWithSomethingElse = false;
+                
             for (I32 __index = 0; __index < __colliderCountAtTipCount; __index++)
             {
                 Collider2D __collider = _collidersAtTipBuffer[__index];
@@ -182,17 +245,11 @@ namespace CoolBeans
                 break;
             }
 
-
             if (__sproutIsCollidingWithSomethingElse)
             {
-                StopGrowing();
-            }
-
-            Boolean __sproutIsAtMaxLength = (_lengthSquared + __distToLastTipSquared) >= sproutMaxLength;
-            if (__sproutIsAtMaxLength)
-            {
-                Debug.Log("Sprout is at max length.");
-                StopGrowing();
+                onSproutCollided?.Invoke();
+                
+                StopGrowing();  
             }
         }
 
