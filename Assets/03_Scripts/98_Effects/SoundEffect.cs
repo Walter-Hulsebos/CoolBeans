@@ -14,13 +14,6 @@ using I32 = System.Int32;
 
 namespace CoolBeans
 {
-    public enum SoundEffectPlayStyle 
-    {
-        Random,
-        Sequential,
-        Reversed,
-    }
-    
     [CreateAssetMenu(fileName = "SFX.asset", menuName = "CoolBeans/Effects/SFX", order = 0)]
     public class SoundEffect : ScriptableObject 
     {
@@ -89,7 +82,7 @@ namespace CoolBeans
         }
 
         [PublicAPI]
-        public AudioSource Play(AudioSource source) 
+        public AudioSource Play(AudioSource source = null) 
         {
             if (audioClips.Count == 0)
             {
@@ -114,7 +107,7 @@ namespace CoolBeans
             #if UNITY_EDITOR
             if (__audioSource != _previewer)
             {
-                Destroy(source.gameObject, __audioSource.clip.length / __audioSource.pitch);
+                Destroy(__audioSource.gameObject, __audioSource.clip.length / __audioSource.pitch);
             }
             #else
             Destroy(__audioSource.gameObject, __audioSource.clip.length / __audioSource.pitch);
@@ -123,4 +116,13 @@ namespace CoolBeans
             return __audioSource;
         }
     }
+    
+    public enum SoundEffectPlayStyle 
+    {
+        Random,
+        Sequential,
+        Reversed,
+    }
+
+    
 }

@@ -52,6 +52,38 @@ MonoBehaviour:
   onSpawn:
     _persistentListeners: []
     Expanded: 1
+  onBlossom:
+    _persistentListeners:
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: UnityEngine.AudioSource, UnityEngine.AudioModule
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes: []
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 11400000, guid: 56d39d66cfe545242bfe78d3bb0db6c5, type: 2}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: Play
+    Expanded: 1
 --- !u!70 &1085323898586637017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

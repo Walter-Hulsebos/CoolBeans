@@ -63,11 +63,15 @@ namespace CoolBeans.Selection
 
         public void Jump(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration, Action<ISelectable> onMadeJump = null)
         {
+            OnJump.Invoke();
+            
             transform.DOJump(endValue: (Vector2)targetPosition, jumpPower: jumpHeight, numJumps: 1, duration: jumpDuration).onComplete += () => onMadeJump?.Invoke(obj: this);
         }
 
         public void Fall(F32x2 targetPosition, F32 jumpHeight, F32 jumpDuration)
         {
+            OnFall.Invoke();
+            
             Vector3 __missedTargetPosition = (Vector2)(targetPosition.xy + new F32x2(x: 0, y: -10));
             
             transform.DOJump(endValue: __missedTargetPosition, jumpPower: jumpHeight, numJumps: 1, duration: jumpDuration)

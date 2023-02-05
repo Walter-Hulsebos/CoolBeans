@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: FoodGetSFX
-  m_EditorClassIdentifier: Assembly-CSharp:CoolBeans:SoundEffect
+  m_Script: {fileID: 11500000, guid: cd2b8ae180fe4884eacd09aff09c0843, type: 3}
+  m_Name: FoodGet
+  m_EditorClassIdentifier: 
   playIndex: 0
-  volume: {x: 0.5, y: 1}
-  pitch: {x: 0.75965965, y: 1.5230579}
+  volume: {x: 0.5, y: 0.5}
+  pitch: {x: 1.9825628, y: 2.6352584}
   audioClips:
   - {fileID: 8300000, guid: 77d6da44ced66fa4dbbc32ffe7b44424, type: 3}
   playBackStyle: 0

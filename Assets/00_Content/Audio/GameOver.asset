@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: FlowerSFX
-  m_EditorClassIdentifier: Assembly-CSharp:CoolBeans:SoundEffect
+  m_Script: {fileID: 11500000, guid: cd2b8ae180fe4884eacd09aff09c0843, type: 3}
+  m_Name: GameOver
+  m_EditorClassIdentifier: 
   playIndex: 0
-  volume: {x: 0.8400499, y: 1}
-  pitch: {x: 1, y: 1.2270464}
+  volume: {x: 0.5456727, y: 0.6960486}
+  pitch: {x: 0.84034556, y: 0.90753484}
   audioClips:
-  - {fileID: 8300000, guid: 48d90815f592b724e925a1cf113bf06b, type: 3}
+  - {fileID: 8300000, guid: 15c3a1324fd477f47b9f6a807edb5708, type: 3}
   playBackStyle: 0

@@ -33541,7 +33541,7 @@ MonoBehaviour:
           SerializationNodes:
           - Name: 
             Entry: 5
-            Data: false
+            Data: true
           Bytes: 
         _canBeDynamic: 0
         _serializedArg: 
@@ -33554,6 +33554,35 @@ MonoBehaviour:
         _typeNameAndAssembly: 
         _suppressLogs: 0
       _methodName: set_enabled
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: UnityEngine.AudioSource, UnityEngine.AudioModule
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes: []
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 11400000, guid: d3bb47f48edbfc646923ebba222ce71a, type: 2}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: Play
     Expanded: 1
   unitLayerMask:
     serializedVersion: 2
@@ -35366,6 +35395,35 @@ MonoBehaviour:
         _typeNameAndAssembly: 
         _suppressLogs: 0
       _methodName: set_enabled
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: UnityEngine.AudioSource, UnityEngine.AudioModule
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes: []
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 11400000, guid: 4d7ec63181153354e959e26fe1ca6e01, type: 2}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: Play
     Expanded: 1
 --- !u!212 &1718534556
 SpriteRenderer:
@@ -43792,58 +43850,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 0.8635792
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.43115914
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
-      value: -1.2107807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].inSlope
-      value: -5.2796593
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
-      value: -0.92820233
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].inWeight
-      value: 0.18136713
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].outSlope
-      value: -5.2796593
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outWeight
-      value: 0.27453062
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996955027637592067, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].tangentMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2996955027637592069, guid: 9abffba4786ca99429acc00f8a83f8d7, type: 3}
       propertyPath: sproutCameraPlaceHolder
       value: 

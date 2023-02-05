@@ -27,6 +27,8 @@ namespace CoolBeans.Sprouts
 
         [SerializeField] private ExtEvent onSpawn;
 
+        [SerializeField] private ExtEvent onBlossom;
+
         private F32 _spawnTime;
 
         private IEnumerator Start()
@@ -45,7 +47,7 @@ namespace CoolBeans.Sprouts
         {
             Instantiate(original: sproutPrefab, position: transform.position, rotation: transform.rotation);
             
-            //TODO: add 
+            onBlossom.Invoke();
             
             Destroy(gameObject);
         }
