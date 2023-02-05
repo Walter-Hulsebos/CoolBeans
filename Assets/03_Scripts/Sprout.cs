@@ -16,6 +16,7 @@ using F32x3 = Unity.Mathematics.float3;
 
 using I32   = System.Int32;
 using quaternion = Unity.Mathematics.quaternion;
+using Random = UnityEngine.Random;
 
 namespace CoolBeans
 {
@@ -48,7 +49,7 @@ namespace CoolBeans
         [SerializeField, HideInInspector] private SpriteShapeRenderer   sproutSpriteShapeRenderer;
         [SerializeField, HideInInspector] private LineRenderer          lineRenderer;
         
-        private List<Vector3> _points = new();
+        private readonly List<Vector3> _points = new();
 
         private F32x3 _forward;
         private F32x3 _tip;
@@ -106,9 +107,6 @@ namespace CoolBeans
             _points.Add(_tip + _forward);
             
             lineRenderer.enabled = true;
-            
-            //lineRenderer.SetPosition(index: 0, _tip);
-            //lineRenderer.SetPosition(index: 1, _tip + _forward);
         }
 
         private void Update()
@@ -123,6 +121,9 @@ namespace CoolBeans
         {
             //-1 = left, 0 = straight, +1 = right
             F32 __steeringVector = steerInput.ReadValue<F32>();
+            F32 __randomSteeringNoise = Random.Range(minInclusive: -1f, maxInclusive: +1f);
+            __steeringVector = clamp(__steeringVector + __randomSteeringNoise, -1, +1);
+            
             F32 __steeringAngle  = __steeringVector * (sproutSteeringSpeed * Time.deltaTime);
 
             //Rotate the forward vector by the steering angle.
@@ -130,18 +131,13 @@ namespace CoolBeans
             
             _tip += _forward * (sproutForwardSpeed * Time.deltaTime);
             sproutCameraPlaceHolder.position = _tip;
-            
-            //lineRenderer.SetPosition(index: lineRenderer.positionCount - 1, position: _tip);
-            
+
             _points[^1] = _tip;
 
             // Add new point if we've moved far enough.
             F32 __distToLastTipSquared = distancesq(_lastTip, _tip);
             if (__distToLastTipSquared >= distanceSquaredRequiredForNewSegment)
             {
-                //lineRenderer.SetPosition(index: lineRenderer.positionCount - 1, position: _tip);
-                //lineRenderer.positionCount += 1;
-                
                 Debug.Log("Count = " + _points.Count);
                 
                 _points.Add(_tip);
