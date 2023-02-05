@@ -287,6 +287,8 @@ namespace CoolBeans
         {
             //TODO: Construct the sprite shape from the line renderer, bake the collider, and disable the line renderer.
             
+            onSproutGrew.Invoke();
+            
             Debug.Log("Rughaar");
             _canGrow = false;
             

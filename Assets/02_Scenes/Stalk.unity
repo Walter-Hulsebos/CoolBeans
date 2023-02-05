@@ -1920,7 +1920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &752286504
 Transform:
   m_ObjectHideFlags: 0
@@ -2002,6 +2002,7 @@ GameObject:
   - component: {fileID: 768642666}
   - component: {fileID: 768642668}
   - component: {fileID: 768642669}
+  - component: {fileID: 768642670}
   m_Layer: 7
   m_Name: Sprout
   m_TagString: Untagged
@@ -2210,7 +2211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768642660}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268322, w: 0.9238796}
-  m_LocalPosition: {x: 2.68, y: 11.12, z: 0}
+  m_LocalPosition: {x: 1.12, y: 10.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2254,7 +2255,17 @@ MonoBehaviour:
     _persistentListeners: []
     Expanded: 1
   onSproutGrew:
-    _persistentListeners: []
+    _persistentListeners:
+    - _persistentArguments: []
+      _target: {fileID: 768642670}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: Place
     Expanded: 1
   sproutRenderer: {fileID: 768642668}
   sproutColliderGenerator: {fileID: 768642669}
@@ -2382,6 +2393,55 @@ MonoBehaviour:
   lineRenderer: {fileID: 768642668}
   polygonCollider2D: {fileID: 0}
   edgeCollider2D: {fileID: 768642661}
+--- !u!114 &768642670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768642660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac0fb7f5f53c1d43a9840750ead0b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factorPrimantissa: 0.3
+  distributionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.5566175
+      outSlope: 2.5566175
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09289618
+    - serializedVersion: 3
+      time: 0.7356878
+      value: 0.8805994
+      inSlope: 0.29755944
+      outSlope: 0.29755944
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.8484061
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -6.9768596
+      outSlope: -6.9768596
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.16843775
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useNormals: 1
+  lineRenderer: {fileID: 768642668}
+  flowerPrefab: {fileID: 270764983366451372, guid: caca566164d2910428377d384e4250e4, type: 3}
 --- !u!1 &963447643
 GameObject:
   m_ObjectHideFlags: 0
