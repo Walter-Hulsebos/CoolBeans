@@ -30,25 +30,54 @@ namespace CoolBeans
             if (__height >= futureHeight)
             {
                 futureObj.SetActive(true);
+                modernObj.SetActive(false);
+                cowboyObj.SetActive(false);
+                medievalObj.SetActive(false);
+                romanObj.SetActive(false);
+                caveManObj.SetActive(false);
             }
             else if (__height >= modernHeight)
             {
+                futureObj.SetActive(false);
                 modernObj.SetActive(true);
+                cowboyObj.SetActive(false);
+                medievalObj.SetActive(false);
+                romanObj.SetActive(false);
+                caveManObj.SetActive(false);
             }
             else if (__height >= cowboyHeight)
             {
+                futureObj.SetActive(false);
+                modernObj.SetActive(false);
                 cowboyObj.SetActive(true);
+                medievalObj.SetActive(false);
+                romanObj.SetActive(false);
+                caveManObj.SetActive(false);
             }
             else if (__height >= medievalHeight)
             {
+                futureObj.SetActive(false);
+                modernObj.SetActive(false);
+                cowboyObj.SetActive(false);
                 medievalObj.SetActive(true);
+                romanObj.SetActive(false);
+                caveManObj.SetActive(false);
             }
             else if (__height >= romanHeight)
             {
+                futureObj.SetActive(false);
+                modernObj.SetActive(false);
+                cowboyObj.SetActive(false);
+                medievalObj.SetActive(false);
                 romanObj.SetActive(true);
+                caveManObj.SetActive(false);
             }
             else
             {
+                modernObj.SetActive(false);
+                cowboyObj.SetActive(false);
+                medievalObj.SetActive(false);
+                romanObj.SetActive(false);
                 caveManObj.SetActive(true);
             }
         }
