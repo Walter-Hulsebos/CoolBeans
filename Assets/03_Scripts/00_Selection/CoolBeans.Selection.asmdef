@@ -6,7 +6,9 @@
         "Unity.InputSystem",
         "ExtEvents",
         "HighlightPlus.Runtime",
-        "CoolBeans.Utils"
+        "Cinemachine",
+        "CoolBeans.Utils",
+        "CoolBeans.Sprouts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

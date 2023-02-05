@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SoundEffect
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: Assembly-CSharp:CoolBeans:SoundEffect
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: Assembly-CSharp:CoolBeans:SoundEffect
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: playIndex
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: volume.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: volume.y
+    value: 0.7777317
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pitch.x
+    value: 0.9154552
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pitch.y
+    value: 1.273785
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.size
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.data[0]
+    value: 
+    objectReference: {fileID: 8300000, guid: 78dc82f4e11205440b08cdeb272c4851, type: 3}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.data[1]
+    value: 
+    objectReference: {fileID: 8300000, guid: 4b060ceb29acc2f40969ef7e64c302c6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.data[2]
+    value: 
+    objectReference: {fileID: 8300000, guid: 6ad895d33109d82488f6d1e00ad2b4ce, type: 3}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.data[3]
+    value: 
+    objectReference: {fileID: 8300000, guid: ec90b6d533fe4a44b99fe5fd74ce7400, type: 3}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.data[4]
+    value: 
+    objectReference: {fileID: 8300000, guid: 4b6377ba0005bc84a8d6c602359ffcd1, type: 3}
+  - target: {fileID: 0}
+    propertyPath: audioClips.Array.data[5]
+    value: 
+    objectReference: {fileID: 8300000, guid: f03558d1bc9ab7f4babbfb7ee0e75368, type: 3}
+  - target: {fileID: 0}
+    propertyPath: playBackStyle
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

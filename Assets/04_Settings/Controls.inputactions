@@ -40,13 +40,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Steer",
+                    "type": "Value",
+                    "id": "86421c1b-a915-4504-aad0-fb510c858bad",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ActAlt",
+                    "type": "Button",
+                    "id": "6e97e45b-7125-47cc-8790-5769d88c9061",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "d10d03ab-aa09-4943-a3a4-6d14664e8a03",
+                    "id": "5bf5b8b7-7432-40ba-942d-c62fd1a9a2bc",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f12113aa-7b31-49e6-aec0-276a21f4dccf",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -78,12 +107,56 @@
                 },
                 {
                     "name": "",
-                    "id": "5bf5b8b7-7432-40ba-942d-c62fd1a9a2bc",
+                    "id": "d10d03ab-aa09-4943-a3a4-6d14664e8a03",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Act",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "a8ae1cbe-c279-41ed-a682-7d6721d928e1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6405afb7-39df-42bb-af9b-2da706635526",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "bff0b799-f978-49aa-be35-28d7776123c1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "40f3ae89-7ade-4548-ac14-2f2eae033967",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActAlt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

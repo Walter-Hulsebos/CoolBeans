@@ -1,0 +1,22 @@
+{
+    "name": "CoolBeans.Sprouts",
+    "rootNamespace": "CoolBeans.Sprouts",
+    "references": [
+        "Unity.InputSystem",
+        "Unity.Mathematics",
+        "Unity.2D.Common.Runtime",
+        "Unity.2D.SpriteShape.Runtime",
+        "Unity.TextMeshPro",
+        "DOTweenPro.Scripts",
+        "ExtEvents"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

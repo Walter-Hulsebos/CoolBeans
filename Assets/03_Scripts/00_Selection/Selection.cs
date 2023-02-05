@@ -18,8 +18,34 @@ namespace CoolBeans.Selection
 
         #endregion
         
-        public readonly HashSet<ISelectable> SelectedUnits  = new();
+        public readonly HashSet<ISelectable> SelectedUnits = new();
         public readonly List<ISelectable>    ExistingUnits = new();
+        
+        public event Action<ISelectable> OnUnitAdded;
+        public event Action<ISelectable> OnUnitRemoved;
+        
+        public void Add(ISelectable unit)
+        {
+            if(ExistingUnits.Contains(unit)) return; //Already added
+
+            ExistingUnits.Add(item: unit);
+            
+            OnUnitAdded?.Invoke(unit);
+        }
+        
+        public void Remove(ISelectable unit)
+        {
+            if (!ExistingUnits.Contains(unit)) return; //Not added
+
+            ExistingUnits.Remove(item: unit);
+            
+            if(SelectedUnits.Contains(unit))
+            {
+                SelectedUnits.Remove(item: unit);
+            }
+            
+            OnUnitRemoved?.Invoke(unit);
+        }
 
 
         [PublicAPI]
