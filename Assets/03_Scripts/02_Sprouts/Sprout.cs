@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
 
 using ExtEvents;
+using UnityEngine.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -77,10 +78,16 @@ namespace CoolBeans
         #endif
         [SerializeField] private ExtEvent onSproutCollided;
         
+                
         #if ODIN_INSPECTOR
         [FoldoutGroup(groupName: "Events")]
         #endif
-        [SerializeField] private ExtEvent onSproutGrew;
+        [SerializeField] private ExtEvent onSproutStartGrow;
+        
+        #if ODIN_INSPECTOR
+        [FoldoutGroup(groupName: "Events")]
+        #endif
+        [SerializeField] private ExtEvent onSproutEndGrow;
 
         #endregion
 
@@ -96,8 +103,7 @@ namespace CoolBeans
         private F32x3 _forward;
         private F32x3 _tip;
         private F32x3 _lastTip;
-        private F32   _lengthSquared;
-        
+
         //private F32   _growStartTime = -1;
         
         private Boolean _canGrow = true;
@@ -158,6 +164,8 @@ namespace CoolBeans
             _points.Add(_tip + _forward);
             
             sproutRenderer.enabled = true;
+            
+            onSproutStartGrow.Invoke();
         }
 
         private void Update()
@@ -189,9 +197,6 @@ namespace CoolBeans
             
             _tip += _forward * (sproutForwardSpeed * Time.deltaTime);
             
-            //Draw.SolidCircleXY(center: _tip,            radius: 0.25f, color: Color.red);
-            //Draw.SolidCircleXY(center: _tip + _forward, radius: 0.25f, color: Color.green);
-
             sproutCameraPlaceHolder.position = _tip;
 
             _points[^1] = _tip;
@@ -200,11 +205,8 @@ namespace CoolBeans
             F32 __distToLastTipSquared = distancesq(_lastTip, _tip);
             if (__distToLastTipSquared >= distanceSquaredRequiredForNewSegment)
             {
-                //Debug.Log("Count = " + _points.Count);
-                
                 _points.Add(_tip);
 
-                _lengthSquared += __distToLastTipSquared;
                 _lastTip = _tip;
             }
 
@@ -288,7 +290,7 @@ namespace CoolBeans
         {
             //TODO: Construct the sprite shape from the line renderer, bake the collider, and disable the line renderer.
             
-            onSproutGrew.Invoke();
+            onSproutEndGrow.Invoke();
             
             //Debug.Log("Rughaar");
             _canGrow = false;

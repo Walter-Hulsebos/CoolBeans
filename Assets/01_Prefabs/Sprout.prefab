@@ -267,7 +267,10 @@ MonoBehaviour:
   onSproutCollided:
     _persistentListeners: []
     Expanded: 1
-  onSproutGrew:
+  onSproutStartGrow:
+    _persistentListeners: []
+    Expanded: 1
+  onSproutEndGrow:
     _persistentListeners:
     - _persistentArguments: []
       _target: {fileID: 2996955027637592065}

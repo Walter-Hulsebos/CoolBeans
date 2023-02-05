@@ -33520,6 +33520,12 @@ MonoBehaviour:
     m_Flags: 0
   camera: {fileID: 519420031}
   selectionBox: {fileID: 3688650686493130665}
+  onBeanSpawned:
+    _persistentListeners: []
+    Expanded: 0
+  onBeanDied:
+    _persistentListeners: []
+    Expanded: 0
   onAllBeansDead:
     _persistentListeners:
     - _persistentArguments:
@@ -44542,7 +44548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3688650687301565700}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -44719,6 +44725,7 @@ GameObject:
   - component: {fileID: 3688650687561052648}
   - component: {fileID: 3688650687561052650}
   - component: {fileID: 3688650687561052649}
+  - component: {fileID: 3688650687561052651}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -44843,6 +44850,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3688650687561052567}
   m_CullTransparentMesh: 1
+--- !u!114 &3688650687561052651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3688650687561052567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd5b10e61c845246a6689ff11957a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tmpText: {fileID: 3688650687561052649}
 --- !u!1 &3688650687789481957
 GameObject:
   m_ObjectHideFlags: 0
