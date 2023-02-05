@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b8ae180fe4884eacd09aff09c0843, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  playIndex: 0
+  playIndex: 2
   volume: {x: 0, y: 0.4848824}
   pitch: {x: 0.9171333, y: 1.2722764}
   audioClips:
