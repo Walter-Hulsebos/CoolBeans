@@ -18,7 +18,7 @@ namespace CoolBeans
 {
     public sealed class FlowerPlacer : MonoBehaviour
     {
-        [SerializeField] private F32  factorPrimantissa = 0.4f;
+        [SerializeField] private F32  factorPrimantissa = 0.1f;
         [SerializeField] private AnimationCurve distributionCurve = AnimationCurve.EaseInOut(timeStart: 0, timeEnd: 1, valueStart: 0, valueEnd: 1);
 
         [SerializeField, HideInInspector] private LineRenderer lineRenderer;

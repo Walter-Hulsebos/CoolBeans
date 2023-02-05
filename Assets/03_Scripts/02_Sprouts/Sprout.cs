@@ -152,6 +152,8 @@ namespace CoolBeans
         {
             //sproutSpriteShapeController.enabled = false;
 
+            sproutCameraPlaceHolder = GameObject.FindWithTag(tag: "SproutCamera").transform;
+
             _points.Clear();
             _points.Add(_tip);
             _points.Add(_tip + _forward);
