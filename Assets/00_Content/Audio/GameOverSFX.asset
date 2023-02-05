@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: SFX
+  m_Name: GameOverSFX
   m_EditorClassIdentifier: Assembly-CSharp:CoolBeans:SoundEffect
   playIndex: 0
-  volume: {x: 0.38997126, y: 0.71893966}
-  pitch: {x: 0.9399553, y: 1.4765251}
+  volume: {x: 0.5, y: 0.5}
+  pitch: {x: 1, y: 1}
   audioClips:
-  - {fileID: 8300000, guid: ec90b6d533fe4a44b99fe5fd74ce7400, type: 3}
+  - {fileID: 8300000, guid: 15c3a1324fd477f47b9f6a807edb5708, type: 3}
   playBackStyle: 0
