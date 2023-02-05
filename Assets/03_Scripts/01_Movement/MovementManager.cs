@@ -177,75 +177,73 @@ namespace CoolBeans
                 //Debug.Log("Has hit nothing!");
             }
         }
-        
+
         private void JumpAllSelectedBeansToPoint(F32x2 targetPosition, Action onMadeJump = null)
         {
+            //for (I32 __index = 0; __index < Instance.SelectedUnits.Count; __index++)
+            I32 __index = 0;
+            
             foreach (ISelectable __bean in Instance.SelectedUnits)
             {
-                F32x2 __beanPosition = (Vector2)__bean.transform.position;
-                
+                //ISelectable __bean = Instance.SelectedUnits[__index];
+
+                F32x2 __beanPosition = (Vector2) __bean.transform.position;
+
+                F32x2 __beanTargetPosition = targetPosition;
+
                 //Get random position around target position, on the stalk.
 
-                Boolean __hasNoRandomPosOnStalk = true;
-                F32x2   __randomPosOnStalk      = targetPosition;
-                I32     __attempts              = 0;
-                
-                const F32 R_RADIUS = 2f;
-                const I32 MAX_ATTEMPTS = 20;
-                
-                while (__hasNoRandomPosOnStalk || __attempts < MAX_ATTEMPTS)
+                if (__index != 0)
                 {
-                    F32x2 __randomOffset = new(x: Random.Range(-R_RADIUS, +R_RADIUS), y: Random.Range(-R_RADIUS, +R_RADIUS));
-                    F32x2 __randomSample = targetPosition + __randomOffset;
-                    
-                    //Check if position is on stalk.
-                    Collider2D __collider2D = Physics2D.OverlapPoint(point: __randomSample, layerMask: stalkLayerMaskValue);
-                    if (__collider2D != null)
+                    Boolean __hasNoRandomPosOnStalk = true;
+                    F32x2 __randomPosOnStalk = __beanTargetPosition;
+                    I32 __attempts = 0;
+
+                    const F32 R_RADIUS = 2f;
+                    const I32 MAX_ATTEMPTS = 20;
+
+                    while (__hasNoRandomPosOnStalk || __attempts < MAX_ATTEMPTS)
                     {
-                        __randomPosOnStalk      = __randomSample;
-                        __hasNoRandomPosOnStalk = false;
+                        F32x2 __randomOffset = new(x: Random.Range(-R_RADIUS, +R_RADIUS),
+                            y: Random.Range(-R_RADIUS, +R_RADIUS));
+                        F32x2 __randomSample = __beanTargetPosition + __randomOffset;
+
+                        //Check if position is on stalk.
+                        Collider2D __collider2D =
+                            Physics2D.OverlapPoint(point: __randomSample, layerMask: stalkLayerMaskValue);
+                        if (__collider2D != null)
+                        {
+                            __randomPosOnStalk = __randomSample;
+                            __hasNoRandomPosOnStalk = false;
+                        }
+
+                        __attempts += 1;
                     }
-                    
-                    __attempts += 1;
+
+                    __beanTargetPosition = __randomPosOnStalk;
                 }
 
-                
                 //F32x2 __direction = normalize(__randomPosOnStalk - __beanPosition);
-                F32 __distance   = distance(__randomPosOnStalk, __beanPosition);
+                F32 __distance = distance(__beanTargetPosition, __beanPosition);
                 F32 __jumpHeight = (__distance > 5f) ? 5f : (__distance * 0.75f);
-                F32 __jumpTime   = jumpTimePerUnit * __distance;
+                F32 __jumpTime = jumpTimePerUnit * __distance;
 
                 Boolean __canReachTarget = (__distance <= maxJumpDistance);
 
                 if (__canReachTarget)
                 {
-                    //Debug.Log("Can reach target!");
-                    __bean.transform.DOJump(endValue: (Vector2)__randomPosOnStalk, jumpPower: __jumpHeight, numJumps: 1, duration: __jumpTime).onComplete += () => onMadeJump?.Invoke();
+                    __bean.Jump(__beanTargetPosition, jumpHeight: __jumpHeight, jumpDuration: __jumpTime,
+                        onMadeJump: onMadeJump);
                 }
                 else
                 {
-                    Vector3 __missedTargetPosition = (Vector2)(__randomPosOnStalk + new F32x2(x: 0, y: -10));
-
-                    //Debug.Log("Can't reach target, jumping to missed target position!");
-                    
-                    //TODO: Add miss target effect/animation.
-                    __bean.transform.DOJump(endValue: __missedTargetPosition, jumpPower: __jumpHeight, numJumps: 1, duration: __jumpTime)
-                        .onComplete += () =>
-                    {
-                        //Enable physics.
-                        Debug.Log("Missed target, enabling physics!");
-                    };
+                    __bean.Fall(__beanTargetPosition, jumpHeight: __jumpHeight, jumpDuration: __jumpTime);
                 }
-                
-                //F32 __distanceClamped = clamp(__distance, 0f, maxJumpDistance);
-                
-                //F32x3 targetPosition = __beanPosition + (__direction * __distanceClamped);
-                
-                //__bean.transform.position = (Vector3)(Vector2)targetPosition;
-                //JumpTowards(__bean.transform.GetComponent<Rigidbody2D>(), targetPosition);
+
+                __index += 1;
             }
         }
-        
+
         // public F32 jumpForce = 10f;
         // public void JumpTowards(Rigidbody2D body, Vector2 targetPosition)
         // {

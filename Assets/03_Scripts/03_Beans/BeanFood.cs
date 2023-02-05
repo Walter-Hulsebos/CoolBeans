@@ -29,14 +29,21 @@ namespace CoolBeans
                 Debug.Log("Bean Found Food");
 
                 __foodPickup.Eat();
-                
                 foodCount += 1;
+                
                 if (foodCount >= foodRequiredForBean)
                 {
-                    //transform.position 
-                    
-                    Instantiate(beanPrefab, transform.position, Quaternion.identity);
                     foodCount = 0;
+                    
+                    //Move player +0.5 to the left.
+                    transform.position += Vector3.left * 0.5f;
+                    
+                    Vector3 __spawnPos = transform.position;
+                    __spawnPos += Vector3.right * 0.5f;
+
+                    Instantiate(beanPrefab, __spawnPos, Quaternion.identity);
+                    foodCount = 0;
+                    return;
                 }
             }
         }

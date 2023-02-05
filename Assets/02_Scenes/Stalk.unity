@@ -269,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179742568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18499994, y: 0.645, z: -14}
+  m_LocalPosition: {x: 0, y: 0, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -759,11 +759,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!4 &345494202 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
-  m_PrefabInstance: {fileID: 1659616737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &362434796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +1607,7 @@ Camera:
   far clip plane: 1000
   field of view: 7.1
   orthographic: 1
-  orthographic size: 5.9312496
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1636,7 +1631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18499994, y: 0.645, z: -14}
+  m_LocalPosition: {x: 0, y: 0, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1710,12 +1705,6 @@ MonoBehaviour:
   m_RotationMode: 0
   m_UpdateMethod: 2
   m_Targets:
-  - target: {fileID: 2081534724}
-    weight: 1
-    radius: 4
-  - target: {fileID: 345494202}
-    weight: 1
-    radius: 4
   - target: {fileID: 727004343}
     weight: 1
     radius: 4
@@ -1727,7 +1716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578575571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.93782336, y: 1.0682856, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4257,11 +4246,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739253760}
   m_CullTransparentMesh: 1
---- !u!4 &2081534724 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8140705083604721517, guid: 815818eacc40a92499ca5ea8c512e549, type: 3}
-  m_PrefabInstance: {fileID: 8140705083052257702}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1703432668399177871
 PrefabInstance:
   m_ObjectHideFlags: 0
