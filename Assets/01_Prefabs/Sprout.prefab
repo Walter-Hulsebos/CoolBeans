@@ -254,11 +254,11 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   sproutCameraPlaceHolder: {fileID: 0}
-  sproutForwardSpeed: 3
-  sproutSteeringSpeed: 60
+  sproutForwardSpeed: 4
+  sproutSteeringSpeed: 70
   collisionSafeLength: 12
-  sproutMaxLength: 25
-  sproutMaxLengthSquared: 625
+  sproutMaxLength: 30
+  sproutMaxLengthSquared: 900
   distanceRequiredForNewSegment: 0.5
   distanceSquaredRequiredForNewSegment: 0.25
   hitsLayerMask:
