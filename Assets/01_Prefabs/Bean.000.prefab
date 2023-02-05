@@ -56,6 +56,12 @@ MonoBehaviour:
   <OnDeselected>k__BackingField:
     _persistentListeners: []
     Expanded: 1
+  <OnJump>k__BackingField:
+    _persistentListeners: []
+    Expanded: 1
+  <OnFall>k__BackingField:
+    _persistentListeners: []
+    Expanded: 1
 --- !u!114 &8140705083604721515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,11 +240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a7792a2fcb83c49bd74d3d563c3a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  romanHeight: 40
-  medievalHeight: 80
-  cowboyHeight: 120
-  modernHeight: 160
-  futureHeight: 200
+  romanHeight: 25
+  medievalHeight: 50
+  cowboyHeight: 75
+  modernHeight: 100
+  futureHeight: 125
   futureObj: {fileID: 8453818142104098410}
   modernObj: {fileID: 8453818141270130183}
   cowboyObj: {fileID: 8453818140827599183}
@@ -258,9 +264,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beanPrefab: {fileID: 8140705083604721505}
-  foodRequiredForBean: 3
+  foodRequiredForBean: 2
   foodCount: 0
-  radius: 0
+  foodCheckRadius: 2
+  foodLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8453818140606041747
 GameObject:
   m_ObjectHideFlags: 0
