@@ -54,8 +54,19 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "d10d03ab-aa09-4943-a3a4-6d14664e8a03",
+                    "id": "5bf5b8b7-7432-40ba-942d-c62fd1a9a2bc",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f12113aa-7b31-49e6-aec0-276a21f4dccf",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -87,7 +98,7 @@
                 },
                 {
                     "name": "",
-                    "id": "5bf5b8b7-7432-40ba-942d-c62fd1a9a2bc",
+                    "id": "d10d03ab-aa09-4943-a3a4-6d14664e8a03",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",

@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beanPrefab: {fileID: 8140705083604721505}
-  foodRequiredForBean: 2
+  foodRequiredForBean: 3
   foodCount: 0
   foodCheckRadius: 2
   foodLayerMask:
