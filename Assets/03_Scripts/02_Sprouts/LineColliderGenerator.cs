@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
+using I32 = System.Int32;
+
 namespace CoolBeans
 {
-    public sealed class LineRendererColliderGenerator : MonoBehaviour
+    public sealed class LineColliderGenerator : MonoBehaviour
     {
         [SerializeField, HideInInspector] private LineRenderer lineRenderer;
         
@@ -29,17 +35,36 @@ namespace CoolBeans
             edgeCollider2D    = transform.GetComponent<EdgeCollider2D>();
         }
 
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
         public void Generate()
         {
-            MeshCollider collider = GetComponent<MeshCollider>();
+            //MeshCollider collider = GetComponent<MeshCollider>();
+            // if (collider == null)
+            // {
+            //     collider = gameObject.AddComponent<MeshCollider>();
+            // }
+            
+            Vector3[] __points3D = new Vector3[lineRenderer.positionCount];
+            lineRenderer.GetPositions(__points3D);
 
-            if (collider == null)
+            Matrix4x4 __worldToLocalMatrix = transform.worldToLocalMatrix;
+            
+            //Convert 3D points to 2D points
+            Vector2[] __points2D = new Vector2[lineRenderer.positionCount];
+            for (I32 __index = 0; __index < lineRenderer.positionCount; __index += 1)
             {
-                collider = gameObject.AddComponent<MeshCollider>();
+                Vector3 __point3D = __points3D[__index];
+                __point3D = __worldToLocalMatrix.MultiplyPoint3x4(__point3D);
+                
+                __points2D[__index] = new(__point3D.x, __point3D.y);
             }
 
-            
-            
+            edgeCollider2D.points = __points2D;
+
+
+
             // Mesh mesh = new Mesh();
             // lineRenderer.BakeMesh(mesh, true);
             //

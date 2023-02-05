@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
+
+using Drawing;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -30,24 +31,27 @@ namespace CoolBeans
         #if ODIN_INSPECTOR
         [SuffixLabel(label: "metres/second", overlay: true)]
         #endif
-        [SerializeField] private F32 sproutForwardSpeed  = 3f;
+        [SerializeField] private F32 sproutForwardSpeed                                    = 3f;
         
         #if ODIN_INSPECTOR
         [SuffixLabel(label: "degrees/second", overlay: true)]
         #endif
-        [SerializeField] private F32 sproutSteeringSpeed = 60f;
+        [SerializeField] private F32 sproutSteeringSpeed                                   = 60f;
         
         [SerializeField] private F32                  sproutMaxLength                      = 15;
         [SerializeField, HideInInspector] private F32 sproutMaxLengthSquared               = 225;
-        [SerializeField] private F32                  distanceRequiredForNewSegment        = 1f;
-        [SerializeField, HideInInspector] private F32 distanceSquaredRequiredForNewSegment = 1f;
+        [SerializeField] private F32                  distanceRequiredForNewSegment        = 0.5f;
+        [SerializeField, HideInInspector] private F32 distanceSquaredRequiredForNewSegment = 0.25f;
         
         //Include layer 7 and 8 by default.
         [SerializeField] private LayerMask hitsLayerMask = 1 << 7 | 1 << 8;
 
-        [SerializeField, HideInInspector] private SpriteShapeController sproutSpriteShapeController;
-        [SerializeField, HideInInspector] private SpriteShapeRenderer   sproutSpriteShapeRenderer;
-        [SerializeField, HideInInspector] private LineRenderer          lineRenderer;
+        // [SerializeField, HideInInspector] private SpriteShapeController sproutSpriteShapeController;
+        // [SerializeField, HideInInspector] private SpriteShapeRenderer   sproutSpriteShapeRenderer;
+        
+        [SerializeField, HideInInspector] private LineRenderer          sproutRenderer;
+        [SerializeField, HideInInspector] private LineColliderGenerator sproutColliderGenerator;
+        [SerializeField, HideInInspector] private EdgeCollider2D        sproutEdgeCollider2D;
         
         private readonly List<Vector3> _points = new();
 
@@ -60,20 +64,25 @@ namespace CoolBeans
 
         private void Reset()
         {
-            sproutSpriteShapeController = GetComponent<SpriteShapeController>();
-            sproutSpriteShapeRenderer   = GetComponent<SpriteShapeRenderer>();
+            // sproutSpriteShapeController = GetComponent<SpriteShapeController>();
+            // sproutSpriteShapeRenderer   = GetComponent<SpriteShapeRenderer>();
             
-            lineRenderer                = GetComponent<LineRenderer>();
+            sproutEdgeCollider2D        = GetComponent<EdgeCollider2D>();
+            
+            sproutRenderer              = GetComponent<LineRenderer>();
+            sproutColliderGenerator     = GetComponent<LineColliderGenerator>();
             
             distanceSquaredRequiredForNewSegment = distanceRequiredForNewSegment * distanceRequiredForNewSegment;
             sproutMaxLengthSquared               = sproutMaxLength * sproutMaxLength;
         }
         private void OnValidate()
         {
-            sproutSpriteShapeController = GetComponent<SpriteShapeController>();
-            sproutSpriteShapeRenderer   = GetComponent<SpriteShapeRenderer>();
+            // sproutSpriteShapeController = GetComponent<SpriteShapeController>();
+            // sproutSpriteShapeRenderer   = GetComponent<SpriteShapeRenderer>();
             
-            lineRenderer                = GetComponent<LineRenderer>();
+            sproutEdgeCollider2D        = GetComponent<EdgeCollider2D>();
+            
+            sproutRenderer              = GetComponent<LineRenderer>();
             
             distanceSquaredRequiredForNewSegment = distanceRequiredForNewSegment * distanceRequiredForNewSegment;
             sproutMaxLengthSquared               = sproutMaxLength * sproutMaxLength;
@@ -100,13 +109,13 @@ namespace CoolBeans
 
         private void Start()
         {
-            sproutSpriteShapeController.enabled = false;
+            //sproutSpriteShapeController.enabled = false;
 
             _points.Clear();
             _points.Add(_tip);
             _points.Add(_tip + _forward);
             
-            lineRenderer.enabled = true;
+            sproutRenderer.enabled = true;
         }
 
         private void Update()
@@ -117,6 +126,8 @@ namespace CoolBeans
             }
         }
 
+        private readonly Collider2D[] _collidersAtTipBuffer = new Collider2D[3];
+        
         private void Grow()
         {
             //-1 = left, 0 = straight, +1 = right
@@ -130,6 +141,10 @@ namespace CoolBeans
             _forward = mul(quaternion.AxisAngle(axis: new F32x3(x: 0f, y: 0f, z: -1f), angle: radians(__steeringAngle)), _forward);
             
             _tip += _forward * (sproutForwardSpeed * Time.deltaTime);
+            
+            //Draw.SolidCircleXY(center: _tip,            radius: 0.25f, color: Color.red);
+            //Draw.SolidCircleXY(center: _tip + _forward, radius: 0.25f, color: Color.green);
+
             sproutCameraPlaceHolder.position = _tip;
 
             _points[^1] = _tip;
@@ -146,15 +161,30 @@ namespace CoolBeans
                 _lastTip = _tip;
             }
 
-            lineRenderer.positionCount = _points.Count;
-            lineRenderer.SetPositions(positions: _points.ToArray());
+            sproutRenderer.positionCount = _points.Count;
+            sproutRenderer.SetPositions(positions: _points.ToArray());
+            
+            sproutColliderGenerator.Generate();
 
             //Searches for collider at the tip of the sprout, ignoring the sprout's own collider.
-            Collider2D __colliderAtTip     = Physics2D.OverlapPoint(point: _tip.xy, layerMask: hitsLayerMask);
-            Boolean    __sproutIsColliding = (__colliderAtTip != null);
-            if (__sproutIsColliding)
+
+            I32 __colliderCountAtTipCount = Physics2D.OverlapPointNonAlloc(point: _tip.xy, results: _collidersAtTipBuffer, layerMask: hitsLayerMask);
+            Boolean __sproutIsCollidingWithSomethingElse = false;
+            for (I32 __index = 0; __index < __colliderCountAtTipCount; __index++)
             {
-                Debug.Log("Sprout is colliding.");
+                Collider2D __collider = _collidersAtTipBuffer[__index];
+                
+                if (__collider == sproutEdgeCollider2D) continue; //skip self.
+                
+                Debug.Log("Collided with " + __collider.name);
+
+                __sproutIsCollidingWithSomethingElse = true;
+                break;
+            }
+
+
+            if (__sproutIsCollidingWithSomethingElse)
+            {
                 StopGrowing();
             }
 
@@ -167,32 +197,32 @@ namespace CoolBeans
         }
 
         
-        private static I32 NextIndex(I32 index, I32 pointCount)     => Mod(index + 1, pointCount);
-        private static I32 PreviousIndex(I32 index, I32 pointCount) => Mod(index - 1, pointCount);
-
-        private static I32 Mod(I32 x, I32 m)
-        {
-            I32 r = x % m;
-            return (r < 0) ? r + m : r;
-        }
-        private void Smoothen(I32 pointIndex)
-        {
-            Vector3 position     = sproutSpriteShapeController.spline.GetPosition(pointIndex);
-            Vector3 positionNext = sproutSpriteShapeController.spline.GetPosition(NextIndex(pointIndex,     sproutSpriteShapeController.spline.GetPointCount()));
-            Vector3 positionPrev = sproutSpriteShapeController.spline.GetPosition(PreviousIndex(pointIndex, sproutSpriteShapeController.spline.GetPointCount()));
-            Vector3 forward      = gameObject.transform.forward;
-
-            float scale = Mathf.Min((positionNext - position).magnitude, (positionPrev - position).magnitude) * 0.33f;
-
-            Vector3 leftTangent  = (positionPrev - position).normalized * scale;
-            Vector3 rightTangent = (positionNext - position).normalized * scale;
-
-            sproutSpriteShapeController.spline.SetTangentMode(pointIndex, ShapeTangentMode.Continuous);
-            SplineUtility.CalculateTangents(point: position, positionPrev, positionNext, forward, scale, out rightTangent, out leftTangent);
-
-            sproutSpriteShapeController.spline.SetLeftTangent(pointIndex, leftTangent);
-            sproutSpriteShapeController.spline.SetRightTangent(pointIndex, rightTangent);
-        }
+        // private static I32 NextIndex(I32 index, I32 pointCount)     => Mod(index + 1, pointCount);
+        // private static I32 PreviousIndex(I32 index, I32 pointCount) => Mod(index - 1, pointCount);
+        //
+        // private static I32 Mod(I32 x, I32 m)
+        // {
+        //     I32 r = x % m;
+        //     return (r < 0) ? r + m : r;
+        // }
+        // private void Smoothen(I32 pointIndex)
+        // {
+        //     Vector3 position     = sproutSpriteShapeController.spline.GetPosition(pointIndex);
+        //     Vector3 positionNext = sproutSpriteShapeController.spline.GetPosition(NextIndex(pointIndex,     sproutSpriteShapeController.spline.GetPointCount()));
+        //     Vector3 positionPrev = sproutSpriteShapeController.spline.GetPosition(PreviousIndex(pointIndex, sproutSpriteShapeController.spline.GetPointCount()));
+        //     Vector3 forward      = gameObject.transform.forward;
+        //
+        //     float scale = Mathf.Min((positionNext - position).magnitude, (positionPrev - position).magnitude) * 0.33f;
+        //
+        //     Vector3 leftTangent  = (positionPrev - position).normalized * scale;
+        //     Vector3 rightTangent = (positionNext - position).normalized * scale;
+        //
+        //     sproutSpriteShapeController.spline.SetTangentMode(pointIndex, ShapeTangentMode.Continuous);
+        //     SplineUtility.CalculateTangents(point: position, positionPrev, positionNext, forward, scale, out rightTangent, out leftTangent);
+        //
+        //     sproutSpriteShapeController.spline.SetLeftTangent(pointIndex, leftTangent);
+        //     sproutSpriteShapeController.spline.SetRightTangent(pointIndex, rightTangent);
+        // }
         
         private I32 boundsHash = 0;
         
