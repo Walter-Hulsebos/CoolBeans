@@ -25,7 +25,7 @@ namespace CoolBeans
         [SerializeField] private InputActionReference         actInputReference;
         [SerializeField, HideInInspector] private InputAction actInput;
         
-        [SerializeField] private F32 maxJumpDistance = 10f;
+        [SerializeField] private F32 maxJumpDistance = 40f;
 
         [SerializeField] private F32 jumpTimePerUnit = 0.08f;
 
@@ -81,7 +81,7 @@ namespace CoolBeans
         
         private void OnEnable()
         {
-            //actInput = actInputReference.action;
+            actInput = actInputReference.action;
 
             actInput.Enable();
             actInput.started += OnInputStarted;

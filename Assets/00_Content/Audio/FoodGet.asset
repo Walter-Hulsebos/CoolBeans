@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playIndex: 0
   volume: {x: 0.5, y: 0.5}
-  pitch: {x: 1.9825628, y: 2.6352584}
+  pitch: {x: 0.9555271, y: 1.406655}
   audioClips:
   - {fileID: 8300000, guid: 77d6da44ced66fa4dbbc32ffe7b44424, type: 3}
   playBackStyle: 0

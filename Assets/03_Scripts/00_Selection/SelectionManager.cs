@@ -31,9 +31,9 @@ namespace CoolBeans.Selection
         
         [SerializeField] private RectTransform selectionBox;
 
-        [SerializeField] public ExtEvent<I32> onBeanSpawned = new();
-        
-        [SerializeField] public ExtEvent<I32> onBeanDied = new();
+        // [SerializeField] public ExtEvent<I32> onBeanSpawned = new();
+        //
+        // [SerializeField] public ExtEvent<I32> onBeanDied = new();
         
         [SerializeField] public ExtEvent onAllBeansDead = new();
 
@@ -65,7 +65,7 @@ namespace CoolBeans.Selection
         private F32x2 MousePositionCurrentCameraSpaceCentered => (MousePositionCurrentCameraSpace - ScreenSafeAreaSizeHalf);
         //private F32x3 MousePositionCurrentWorldSpaceCentered  => camera.ToWorldSpace(cameraSpacePosition: new F32x3(xy: MousePositionCurrentCameraSpaceCentered, z: camera.nearClipPlane));
 
-        #if UNITY_EDITOR
+        //#if UNITY_EDITOR
         private void Reset()
         {
             camera = Camera.main;
@@ -86,7 +86,7 @@ namespace CoolBeans.Selection
             addToSelectionInput      = addToSelectionInputReference.action;
             removeFromSelectionInput = removeFromSelectionInputReference.action;
         }
-        #endif
+        //#endif
 
         private void OnEnable()
         {
@@ -94,7 +94,7 @@ namespace CoolBeans.Selection
             addToSelectionInput      = addToSelectionInputReference.action;
             removeFromSelectionInput = removeFromSelectionInputReference.action;
             
-            Selection.Instance.OnUnitAdded   += OnUnitAdded;
+            //Selection.Instance.OnUnitAdded   += OnUnitAdded;
             Selection.Instance.OnUnitRemoved += OnUnitRemoved;
             
             selectInput.Enable();
@@ -103,7 +103,7 @@ namespace CoolBeans.Selection
         }
         private void OnDisable()
         {
-            Selection.Instance.OnUnitAdded   -= OnUnitAdded;
+            //Selection.Instance.OnUnitAdded   -= OnUnitAdded;
             Selection.Instance.OnUnitRemoved -= OnUnitRemoved;
             
             removeFromSelectionInput.Disable();
@@ -117,21 +117,20 @@ namespace CoolBeans.Selection
             //cursor.anchoredPosition = MousePositionCurrentCameraSpaceCentered;
         }
 
-        private void OnUnitAdded(ISelectable unit)
-        {
-            onBeanSpawned.Invoke(Selection.Instance.SelectedUnits.Count);
-        }
+        // private void OnUnitAdded(ISelectable unit)
+        // {
+        //     onBeanSpawned.Invoke(Selection.Instance.SelectedUnits.Count);
+        // }
 
         private void OnUnitRemoved(ISelectable unit)
         {
             _unitsToAddToSelection.Remove(unit);
             _unitsToRemoveFromSelection.Remove(unit);
             
-            onBeanDied.Invoke(Selection.Instance.SelectedUnits.Count);
+            //onBeanDied.Invoke(Selection.Instance.SelectedUnits.Count);
 
             if (Selection.Instance.ExistingUnits.Count == 0)
             {
-                Debug.Log("ALL BEANS ARE DEAD!!!");
                 onAllBeansDead.Invoke();
             }
         }
